@@ -251,6 +251,7 @@ Core package philosophy: **zero default packages**, then a curated minimal
 toolset (coreutils, curl/wget, git, neovim, tmux, cryptsetup, sbctl, xfs,
 wireguard-tools, tcpdump, age/signify/gnupg/openssl, jq/yq, strace, smartmontools…)
 with `EDITOR=nvim` and `nix-ld` for dynamically-linked binaries.
+
 <small>Credits to [github.com/sotormd/nixos](https://github.com/sotormd/nixos)</small>
 
 ---
