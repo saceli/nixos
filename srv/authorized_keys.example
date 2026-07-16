@@ -1,0 +1,4 @@
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB7examplekeydatahere123456789 user@hostname
+
+Add .pub file's content in here line by line
+::: NEVER SHARE YOUR NON .pub FILES, THOSE ARE PRIVATE KEYS AND THEY'RE CONFIDENTIAL :::
