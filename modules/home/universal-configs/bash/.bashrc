@@ -4,11 +4,13 @@
 [[ $- == *i* ]] || return
 
 # -----------------------------------------------------------------------------
-# History (disabled for obvious reason, it also gets wiped via /etc/bash_logout (see modules/services/run0/sudo.nix))
+# History (set the following 2 options to 0 if you wanna completely disable history (you can't use up arrow to go back))
+# NOTE: the history already gets deleted on logout via /etc/bash_logout
 # -----------------------------------------------------------------------------
 
-HISTSIZE=0
-HISTFILESIZE=0 
+HISTSIZE=100000
+HISTFILESIZE=100000
+export HISTCONTROL=ignoredups:erasedups
 
 shopt -s histappend
 
