@@ -13,7 +13,7 @@
       ./configs/DankMaterialShell/session.json;
 
     ".config/DankMaterialShell/clsettings.json".source = 
-      ./configs/DankMaterialShell/clsettings.json # disable clipboard history!!!!!!!!
+      ./configs/DankMaterialShell/clsettings.json; # disable clipboard history!!!!!!!!
 
     # dgop
     ".config/dgop/colors.json".source =
