@@ -9,18 +9,27 @@ Raspberry Pi server - all built from one modular, reusable configuration tree.
 - **Secure boot:** [lanzaboote](https://github.com/nix-community/lanzaboote)
 - **Desktop:** niri + DankMaterialShell
 
+## Preview
+
+| Laptop                                                                                                    | Live ISO                                                                                            |
+| :---------------------------------------------------------------------------------------------------------:| :---------------------------------------------------------------------------------------------------:|
+| ![AMD64 laptop running Niri with DankMaterialShell and Catppuccin Mocha theme](assets/laptop-preview.png) | ![Live ISO running Niri with DankMaterialShell and Catppuccin Mocha theme](assets/live-preview.png) |
+
 ---
 
 ## Table of Contents
 
+- [TODO](#todo)
 - [Hosts](#hosts)
 - [Flake Inputs](#flake-inputs)
 - [Quick Start](#quick-start)
   - [First-time setup (required)](#first-time-setup-required)
+  - [Edit the host-specific hardware file](#edit-the-host-specific-hardware-file)
+  - [Review all files before rebuilding](#review-all-files-before-rebuilding)
   - [Rebuild the laptop](#rebuild-the-laptop)
-  - [Build the live ISO](#build-the-live-iso)
+  - [Build the live ISO](#optional-build-the-live-iso)
   - [Build the Raspberry Pi SD image](#build-the-raspberry-pi-sd-image)
-  - [Development shell](#development-shell)
+  - [Development shell](#development-shell-use-when-developing-the-flake-especially-with-vscodium)
 - [Features](#features)
   - [Security hardening](#security-hardening)
   - [Privacy](#privacy)
@@ -28,18 +37,44 @@ Raspberry Pi server - all built from one modular, reusable configuration tree.
   - [Applications](#applications)
   - [System & services](#system--services)
 - [Module Library](#module-library)
-- [Repository Layout](#repository-layout)
 - [Notes & Caveats](#notes--caveats)
-
+- [License](#license)
+- [Credits](#credits)
 ---
+
+## TODO
+
+### Features
+
+- [ ] VaultWarden module
+- [ ] SearXNG module
+- [ ] Automatic backups
+- [ ] hacktop-amd64 host (hardened laptop or ISO to pentest/ethical hack with)
+
+### Security
+
+- [ ] USBGuard support
+- [ ] AppArmor improvements
+
+### Documentation
+
+- [x] Installation screenshots
+- [ ] Module documentation
+- [ ] Troubleshooting guide
+- [ ] FAQ
+- [ ] Migration guide
+
+### Development
+
+- [ ] CI (`nix flake check`, formatting, linting)
 
 ## Hosts
 
-| Configuration | System | Purpose | Build target |
-|---|---|---|---|
-| `laptop-amd64` | `x86_64-linux` | Main daily-driver laptop (LUKS-encrypted, secure boot, full desktop) | `nixos-rebuild` |
-| `laptop-iso` | `x86_64-linux` | Bootable live USB with the full desktop, for installs & recovery | `.#laptop-iso` package |
-| `raspi` | `aarch64-linux` | Headless Raspberry Pi server (SSH-only, hardened sshd) | `.#packages.aarch64-linux.raspi` package (or `.#raspi` if you're already in a aarch machine) |
+| Configuration  | System          | Purpose                                                              | Build target                                                                                 |
+| ----------------| -----------------| ----------------------------------------------------------------------| ----------------------------------------------------------------------------------------------|
+| `laptop-amd64` | `x86_64-linux`  | Main daily-driver laptop (LUKS-encrypted, secure boot, full desktop) | `nixos-rebuild`                                                                              |
+| `laptop-iso`   | `x86_64-linux`  | Bootable live USB with the full desktop, for installs & recovery     | `.#laptop-iso` package                                                                       |
+| `raspi`        | `aarch64-linux` | Headless Raspberry Pi server (SSH-only, hardened sshd)               | `.#packages.aarch64-linux.raspi` package (or `.#raspi` if you're already in a aarch machine) |
 
 All hosts share the same module library (`modules/`) and only differ in which
 modules they compose, plus their host-specific files in `hosts/`.
@@ -88,7 +123,7 @@ sudo sbctl create-keys   # before rebuilding with secure boot enabled
 If you haven't already, edit the host-specific hardware file to match your disks' UUID and options. If you don't your system won't boot
 Simply put your disk partitions' UUID in the correct places in the file.
 
-### Review all of the flake's file before rebuilding!
+### Review all files before rebuilding
 
 Before rebuilding review everything and adjust to your needs, this isn't a copy-paste kind of setup, you need to edit some stuff such as git config and more. You also might need to unblacklist or blacklist some more modules so read through all of the flake's file before rebuilding.
 
@@ -100,7 +135,7 @@ sudo nixos-rebuild switch --flake .#laptop-amd64
 
 Once built, `sudo` is aliased to `run0` on the system, so `run0 nixos-rebuild ...` works too.
 
-### Build the live ISO ( ::: OPTIONAL ::: )
+### Optional: Build the live ISO
 
 ```bash
 nix build .#laptop-iso
