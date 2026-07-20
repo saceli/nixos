@@ -23,6 +23,12 @@
       url = "github:AvengeMedia/dms-plugin-registry";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    wallpapers = {
+      url = "github:saceli/wallpapers";
+      flake = false; # just a repository with files not a flake
+    };
+
   };
 
   outputs = {
@@ -32,6 +38,7 @@
     lanzaboote,
     iloader,
     dms-plugin-registry,
+    wallpapers,
     ...
   }:
   let
@@ -103,6 +110,7 @@
             self
             iloader
             hjem
+            wallpapers
             dms-plugin-registry;
         };
 
@@ -167,6 +175,7 @@
           self
           iloader
           hjem
+          wallpapers
           dms-plugin-registry;
       };
 
