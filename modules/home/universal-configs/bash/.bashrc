@@ -98,6 +98,30 @@ listallrecursively() {
     done
 }
 
+# usage: destroy [filepath] - Destroys a file overwriting it with random bytes 3 times and
+#			      once with 0s, then renames it a bunch of times and deletes
+#			      it from the disk. (using `shred`)
+destroy() {
+    if [ "$#" -eq 0 ]; then
+        echo "Usage: destroy <file> [file...]"
+        return 1
+    fi
+
+    printf 'The following will be securely deleted:\n'
+    printf '  %s\n' "$@"
+    printf 'Continue? [y/N] '
+    read -r reply
+
+    case "$reply" in
+        [Yy]|[Yy][Ee][Ss])
+            shred -v -z -u -- "$@"
+            ;;
+        *)
+            echo "Cancelled."
+            ;;
+    esac
+}
+
 # Usage: buildnix <package-output> (e.g. buildnix raspi :: Produces a results/isos/raspi)
 buildnix() {
     nix build /home/elia/nixos#$1

@@ -53,7 +53,7 @@
     sidequest
 
     # COMMUNICATION
-    vesktop
+    # vesktop # for now commented out cuz of electron marked insecure for EOL
 
     # FILE MANAGEMENT
     nautilus

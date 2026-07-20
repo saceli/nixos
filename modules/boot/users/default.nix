@@ -1,5 +1,6 @@
 {
   imports = [
+    ./accountsservice.nix
     ./disable-coredumps.nix
     ./disable-emergency.nix
     ./disable-rescue.nix
