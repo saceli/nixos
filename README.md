@@ -13,7 +13,7 @@ Raspberry Pi server - all built from one modular, reusable configuration tree.
 
 | Laptop                                                                                                    | Live ISO                                                                                            |
 | :---------------------------------------------------------------------------------------------------------:| :---------------------------------------------------------------------------------------------------:|
-| ![AMD64 laptop running Niri with DankMaterialShell and Catppuccin Mocha theme](assets/laptop-preview.png) | ![Live ISO running Niri with DankMaterialShell and Catppuccin Mocha theme](assets/live-preview.png) |
+| ![AMD64 laptop running Niri with DankMaterialShell and Catppuccin Mocha theme](assets/previews/laptop-preview.png) | ![Live ISO running Niri with DankMaterialShell and Catppuccin Mocha theme](assets/previews/live-preview.png) |
 
 ---
 
