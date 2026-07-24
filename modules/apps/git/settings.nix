@@ -12,5 +12,6 @@
     gpg.format = "ssh";
     commit.gpgSign = true;
     gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
+    init.defaultBranch = "main";
   };
 }
