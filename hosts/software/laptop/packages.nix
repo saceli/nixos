@@ -13,6 +13,7 @@
     kicad
     android-tools
     adb-sync
+    appimage-run
 
     # DESIGN & CREATIVE
     blender
