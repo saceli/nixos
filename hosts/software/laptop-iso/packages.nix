@@ -11,6 +11,7 @@
     neovim
     android-tools
     adb-sync
+    appimage-run
 
     # DESIGN & CREATIVE
     imagemagick
