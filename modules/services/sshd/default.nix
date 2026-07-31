@@ -6,5 +6,6 @@
     ./keys.nix
     ./online.nix
     ./settings.nix
+    ./firewall.nix
   ];
 }
