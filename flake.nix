@@ -274,7 +274,6 @@
 
         # Services
         modules.services.auditd
-        modules.services.bluetooth
         modules.services.journald
         modules.services.pipewire
         modules.services.run0
