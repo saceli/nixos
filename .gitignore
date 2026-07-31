@@ -10,3 +10,6 @@ result-*
 
 # Ignore vscode shit
 .vscode*
+
+# ignore this useless reminder for my ports, its just a map of what i use internally for caddy, dont worry about it
+srv/ports.txt

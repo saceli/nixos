@@ -281,6 +281,9 @@
         modules.services.sshd
         modules.services.timesyncd
         modules.services.upower
+        modules.services.caddy
+        modules.services.unbound
+        modules.services.searxng
 
         # Host-specific
         hosts.software.raspi

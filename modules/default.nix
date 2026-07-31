@@ -54,11 +54,14 @@
     services = {
       auditd = { imports = [ ./services/auditd ]; };
       bluetooth = { imports = [ ./services/bluetooth ]; };
+      caddy = { imports = [ ./services/caddy ]; };
       journald = { imports = [ ./services/journald ]; };
       pipewire = { imports = [ ./services/pipewire ]; };
       run0 = { imports = [ ./services/run0 ]; };
+      searxng = { imports = [ ./services/searxng ]; };
       sshd = { imports = [ ./services/sshd ]; };
       timesyncd = { imports = [ ./services/timesyncd ]; };
+      unbound = { imports = [ ./services/unbound ]; };
       upower = { imports = [ ./services/upower ]; };
 
     };
