@@ -23,7 +23,8 @@ Raspberry Pi server - all built from one modular, reusable configuration tree.
 - [Hosts](#hosts)
 - [Flake Inputs](#flake-inputs)
 - [Quick Start](#quick-start)
-  - [First-time setup (required)](#first-time-setup-required)
+  - [First-time setup (required) - Laptop](#first-time-setup-required---laptop)
+  - [First-time setup (required) - Homelab](#first-time-setup-required---homelab)
   - [Edit the host-specific hardware file](#edit-the-host-specific-hardware-file)
   - [Review all files before rebuilding](#review-all-files-before-rebuilding)
   - [Rebuild the laptop](#rebuild-the-laptop)
@@ -46,8 +47,9 @@ Raspberry Pi server - all built from one modular, reusable configuration tree.
 
 ### Features
 
+- [ ] Add a way of declaring usernames for each output, through a toml file or txt files and builtin.readFile
 - [ ] VaultWarden module
-- [ ] SearXNG module
+- [X] SearXNG module
 - [ ] Automatic backups
 - [ ] hacktop-amd64 host (hardened laptop or ISO to pentest/ethical hack with)
 
@@ -96,7 +98,7 @@ modules they compose, plus their host-specific files in `hosts/`.
 > Requires Nix with `nix-command` and `flakes` experimental features enabled.
 > (The built systems enable these for themselves in `modules/core/nix`.)
 
-### First-time setup (required)
+### First-time setup (required) - Laptop
 
 The laptop and raspi use **immutable users** - passwords are set declaratively,
 so you must create the password hash file **before** the first rebuild:
@@ -104,7 +106,9 @@ so you must create the password hash file **before** the first rebuild:
 ```bash
 sudo mkdir -p /root/secrets
 sudo mkpasswd | sudo tee /root/secrets/elia.hash   # (NOTE: This command doesn't have a confirmation window like `passwd` so make sure you spell correctly!)
-sudo chmod 400 /root/secrets/elia.hash   # must be 0400 root:root
+# must be 0400 root:root
+sudo chmod 400 /root/secrets/elia.hash
+sudo chown root:root /root/secrets/elia.hash
 ```
 
 > **Warning:** create the hash in a GUI terminal, *not* a TTY: a keyboard
@@ -118,10 +122,27 @@ On the laptop, Secure Boot keys live in `/var/lib/sbctl` (lanzaboote PKI bundle)
 sudo sbctl create-keys   # before rebuilding with secure boot enabled
 ```
 
+### First-time setup (required) - Homelab
+
+> **Note:** This step is required if you use the `modules.services.searxng` or `modules.services.vaultwarden` modules (`raspi` has these modules)
+
+`modules.services.searxng` requires a .env file for its `SEARXNG_SECRET` value, which you shouldn't copy to the Nix Store, so we use a root-owned file, here's how to create it
+
+```bash
+sudo mkdir -p /root/secrets
+sudo echo "SEARXNG_SECRET=$(openssl rand -hex 64)" > /root/secrets/searxng.env # NOTE: You can also use `openssl rand -hex 32`, i use 64 bytes for extra safety, but really it doesn't matter 
+# must be 0400 root:root 
+sudo chmod 400 /root/secrets/searxng.env
+sudo chown root:root /root/secrets/searxng.env
+```
+
+
 ### Edit the host-specific hardware file
 
 If you haven't already, edit the host-specific hardware file to match your disks' UUID and options. If you don't your system won't boot
 Simply put your disk partitions' UUID in the correct places in the file.
+
+If you use luks for another partition other than / (root) then you also might want to auto unlock it after unlocking the / (root) partition, therefore we use CryptTab, for this to work you must make a `/root/homeluks.key` 
 
 ### Review all files before rebuilding
 
