@@ -17,4 +17,7 @@
   nix.settings.max-jobs = 1;
   nix.settings.cores = 1;
 
+  # hostname
+  networking.hostName = "nixodactyl";
+
 }
