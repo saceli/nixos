@@ -5,5 +5,6 @@
     ".config/neofetch/config.conf".source = ./neofetch/config.conf;
     ".config/starship.toml".source = ./starship/starship.toml;
     ".bashrc".source = ./bash/.bashrc;
+    ".profile".source = ./bash/.profile;
   };
 }
