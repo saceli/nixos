@@ -22,10 +22,8 @@
 
     # VIDEO & MEDIA
     mpv
-    vlc
     ffmpeg
     yt-dlp
-    eog
 
     # FILE MANAGEMENT
     gvfs
@@ -34,16 +32,12 @@
     # NETWORKING & INTERNET
     networkmanager
     networkmanagerapplet
-    openssh
     inetutils
     dnsutils
     nmap
     tailscale
     curl
     wget
-
-    # BLUETOOTH
-    bluez
 
     # SYSTEM MONITORING
     htop
@@ -87,9 +81,6 @@
     pipewire
     wireplumber
 
-    # FONTS
-    nerd-fonts.jetbrains-mono
-
     # SECURITY & AUTHENTICATION
     polkit
     fprintd
@@ -99,7 +90,6 @@
     cups-pk-helper
 
     # UTILITIES
-    qbittorrent
     man-db
     man-pages
     usbutils

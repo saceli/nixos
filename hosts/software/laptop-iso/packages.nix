@@ -28,16 +28,13 @@
 
     # VIDEO & MEDIA
     mpv
-    vlc
     ffmpeg
     obs-studio
     wf-recorder
     grim
     slurp
-    eog
 
     # FILE MANAGEMENT
-    nautilus
     peazip
     filezilla
     gvfs
@@ -46,7 +43,6 @@
     # NETWORKING & INTERNET
     networkmanager
     networkmanagerapplet
-    openssh
     inetutils
     dnsutils
     nmap
@@ -134,7 +130,6 @@
     cups-pk-helper
 
     # UTILITIES
-    gedit
     qbittorrent
     man-db
     man-pages
