@@ -159,7 +159,7 @@ Once built, `sudo` is aliased to `run0` on the system, so `run0 nixos-rebuild ..
 ### Optional: Build the live ISO
 
 ```bash
-nix build .#laptop-iso
+nix build .#packages.x86_64-linux.laptop-iso
 ls result/iso/          # the .iso image
 sudo dd if=result/iso/nixos-*.iso of=/dev/sdX bs=4M status=progress oflag=sync
 ```
@@ -174,7 +174,7 @@ Live media credentials (mutable users, it's a live environment):
 ### Build the Raspberry Pi SD image
 
 ```bash
-nix build .#raspi       # result/sd-image/*.img (uncompressed) [around 9GB]
+nix build .#packages.aarch64-linux.raspi       # result/sd-image/*.img (uncompressed) [around 9GB]
 ```
 
 Building an `aarch64-linux` image from the x86_64 laptop works out of the box:
@@ -192,13 +192,13 @@ nix develop
 
 Drops you into a shell with a status banner and the full toolchain:
 
-| Category | Tools |
-|---|---|
-| Editor | `vscodium` |
-| General | `git`, `direnv` |
-| Nix | `nil`, `nixfmt-rfc-style`, `alejandra`, `statix`, `deadnix` |
-| Shell | `shfmt`, `shellcheck` |
-| Misc | `jq`, `ripgrep`, `fd`, `just` |
+| Category | Tools                                          |
+| ----------| ------------------------------------------------|
+| Editor   | `vscodium`                                     |
+| General  | `git`, `direnv`                                |
+| Nix      | `nil`, `nixfmt-rfc-style`, `statix`, `deadnix` |
+| Shell    | `shfmt`, `shellcheck`                          |
+| Misc     | `jq`, `ripgrep`, `fd`, `just`                  |
 
 ---
 
@@ -308,7 +308,8 @@ toolset (coreutils, curl/wget, git, neovim, tmux, cryptsetup, sbctl, xfs,
 wireguard-tools, tcpdump, age/signify/gnupg/openssl, jq/yq, strace, smartmontools…)
 with `EDITOR=nvim` and `nix-ld` for dynamically-linked binaries.
 
-<small>Credits to [github.com/sotormd/nixos](https://github.com/sotormd/nixos)</small>
+<small>The `modules.core` is licensed under GPL 3.0, it is [sotormd's](https://github.com/sotormd) work, I took it and edited minimally. </small>
+<small>Credits & Copyright © 2026 [github.com/sotormd/nixos](https://github.com/sotormd/nixos) for `modules.core` </small>
 
 ---
 
@@ -319,7 +320,7 @@ they need. Import paths mirror the tree, e.g. `modules.services.sshd`.
 
 ```
 modules/
-├── apps/        bash · brave · git · zathura
+├── apps/        bash · brave · git · zathura · nautilus · eog · fileroller · gedit · ssh · vlc
 ├── boot/        emulated (binfmt) · kernel (blacklist/params/sysctl/initrd)
 │                localization · malloc (graphene) · secureboot (lanzaboote)
 │                systemd-boot · uboot (extlinux) · users (immutable/locked-root)
@@ -331,7 +332,7 @@ modules/
 ├── network/     firewall · host (dns, issue, machine-id, wireless)
 │                macchanger · networkmanager
 └── services/    auditd · bluetooth · journald · pipewire · run0 · sshd
-                 timesyncd · upower
+                 timesyncd · upower · caddy ·unbound · searxng
 ```
 
 Host-specific bits live in `hosts/`:

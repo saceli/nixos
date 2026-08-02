@@ -4,7 +4,13 @@
     apps = {
       bash = { imports = [ ./apps/bash ]; };
       brave = { imports = [ ./apps/brave ]; };
+      eog = { imports = [ ./apps/eog ]; };
+      fileroller = { imports = [ ./apps/fileroller ]; };
+      gedit = { imports = [ ./apps/gedit ]; };
       git = { imports = [ ./apps/git ]; };
+      nautilus = { imports = [ ./apps/nautilus ]; };
+      ssh = { imports = [ ./apps/ssh ]; };
+      vlc = { imports = [ ./apps/vlc ]; };
       zathura = { imports = [ ./apps/zathura ]; };
 
     };

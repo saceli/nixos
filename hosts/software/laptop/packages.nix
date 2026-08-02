@@ -36,14 +36,12 @@
 
     # VIDEO & MEDIA
     mpv
-    vlc
     ffmpeg
     yt-dlp
     obs-studio
     wf-recorder
     grim
     slurp
-    eog
 
     # GAMING
     steam
@@ -57,7 +55,6 @@
     vesktop
 
     # FILE MANAGEMENT
-    nautilus
     peazip
     filezilla
     gvfs
@@ -67,7 +64,6 @@
     proton-vpn
     networkmanager
     networkmanagerapplet
-    openssh
     inetutils
     dnsutils
     nmap
@@ -158,7 +154,6 @@
     cups-pk-helper
 
     # UTILITIES
-    gedit
     qbittorrent
     man-db
     man-pages

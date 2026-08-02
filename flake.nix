@@ -64,7 +64,6 @@
         # Nix
         nil
         nixfmt-rfc-style
-        alejandra
         statix
         deadnix
 
@@ -135,6 +134,12 @@
           modules.apps.git
           modules.apps.zathura
           modules.apps.bash
+          modules.apps.eog
+          modules.apps.fileroller
+          modules.apps.gedit
+          modules.apps.nautilus
+          modules.apps.ssh
+          modules.apps.vlc
 
           # Desktop
           modules.desktop.dms-niri
@@ -199,6 +204,12 @@
         modules.apps.git
         modules.apps.zathura
         modules.apps.bash
+        modules.apps.eog
+        modules.apps.fileroller
+        modules.apps.gedit
+        modules.apps.nautilus
+        modules.apps.ssh
+        modules.apps.vlc
 
         # Desktop
         modules.desktop.dms-niri
@@ -246,6 +257,7 @@
         # Apps
         modules.apps.git
         modules.apps.bash
+        modules.apps.ssh
 
         # Boot
         modules.boot.kernel
