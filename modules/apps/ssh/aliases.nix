@@ -7,25 +7,30 @@
       HostName 192.168.178.33
       User elia
       Port 22
+      SetEnv TERM=xterm-256color
       IdentityFile ~/.ssh/raspi
 
     Host homelab
       HostName 192.168.178.33
       User elia
       Port 22
+      SetEnv TERM=xterm-256color
       IdentityFile ~/.ssh/raspi
 
     Host raspi
       HostName 192.168.178.33
       User elia
       Port 22
+      SetEnv TERM=xterm-256color
       IdentityFile ~/.ssh/raspi
 
     Host nixodactyl
       HostName 192.168.178.33
       User elia
       Port 22
+      SetEnv TERM=xterm-256color
       IdentityFile ~/.ssh/raspi
+    
     Host github
       HostName github.com
       User git
