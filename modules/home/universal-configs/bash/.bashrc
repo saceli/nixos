@@ -5,12 +5,12 @@
 
 # -----------------------------------------------------------------------------
 # History (set the following 2 options to 0 if you wanna completely disable history (you can't use up arrow to go back))
-# NOTE: the history already gets deleted on logout via /etc/bash_logout
+# NOTE: the history already gets deleted on logout via modules.apps.bash (systemd Unit)
 # -----------------------------------------------------------------------------
 
 HISTSIZE=100000
 HISTFILESIZE=100000
-export HISTCONTROL=ignoredups:erasedups
+export HISTCONTROL=ignoredups:erasedups:ignorespace
 
 shopt -s histappend
 
@@ -46,7 +46,7 @@ alias -- swww-daemon='awww-daemon'
 alias -- wttr='curl wttr.in'
 alias -- yt='yt-dlp -t mp3'
 
-# Permissions (apparently directories need the executable bit to be able to be traversable (mandela effect for some ppl))
+# Permissions (apparently directories need the executable bit to be able to be traversable
 alias -- chmodfiles644='find . -type f -exec chmod 644 {} +'
 alias -- chmoddirs755='find . -type d -exec chmod 755 {} +'
 
@@ -122,7 +122,7 @@ destroy() {
     esac
 }
 
-# Usage: buildnix <package-output> (e.g. buildnix raspi :: Produces a results/isos/raspi)
+# Usage: buildnix <package-output> (e.g. buildnix raspi :: Produces a results/sd-image/whatever.img)
 buildnix() {
     nix build /home/elia/nixos#$1
 }

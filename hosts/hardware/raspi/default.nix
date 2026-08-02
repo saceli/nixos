@@ -1,3 +1,6 @@
 {
-  imports = [ ./hardware.nix ];
+  imports = [ 
+    ./hardware.nix
+    ./static-ip.nix
+  ];
 }

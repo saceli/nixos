@@ -27,7 +27,7 @@ let
     echo "Changing MAC address on $iface"
 
     ip link set "$iface" down
-    macchanger -r "$iface"
+    macchanger -A "$iface"
     ip link set "$iface" up
   '';
 in
