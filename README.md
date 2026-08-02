@@ -47,6 +47,7 @@ Raspberry Pi server - all built from one modular, reusable configuration tree.
 
 ### Features
 
+- [ ] COMING NEXT MAJ COMMIT: Migrate to a config.nix-based approach to declare any nix option's option (like sotormd)
 - [ ] Add a way of declaring usernames for each output, through a toml file or txt files and builtin.readFile
 - [ ] VaultWarden module
 - [X] SearXNG module
@@ -69,6 +70,7 @@ Raspberry Pi server - all built from one modular, reusable configuration tree.
 ### Development
 
 - [ ] CI (`nix flake check`, formatting, linting)
+- [ ] CI (`nix flake update`)
 
 ## Hosts
 
@@ -120,6 +122,15 @@ On the laptop, Secure Boot keys live in `/var/lib/sbctl` (lanzaboote PKI bundle)
 
 ```bash
 sudo sbctl create-keys   # before rebuilding with secure boot enabled
+```
+
+If you also didn't remove `host/hardware/*anythingHere*/static-ip.nix`, you have to make a `/root/secrets/home-wifi.env`:
+```bash
+sudo mkdir -p /root/secrets
+sudo sh -c 'printf "WIFI_SSID=\"%s\"\nWIFI_PASSWORD=\"%s\"\n" "replaceMeWithSSID" "replaceMeWithPassword" > /root/secrets/home-wifi.env' # (NOTE: Make sure to replace the `replaceMe*` fields!)
+# must be 0400 root:root
+sudo chmod 400 /root/secrets/home-wifi.env
+sudo chown root:root /root/secrets/home-wifi.env
 ```
 
 ### First-time setup (required) - Homelab
