@@ -23,6 +23,9 @@ shopt -s cdspell
 shopt -s checkjobs
 shopt -s extglob
 shopt -s globstar
+shopt -s checkwinsize
+shopt -s nullglob
+set -o vi 
 
 # -----------------------------------------------------------------------------
 # Aliases
@@ -40,6 +43,56 @@ alias -- niri-restart='systemctl --user restart niri'
 alias -- niri-start='systemctl --user start niri'
 alias -- now='date +%s'
 alias -- play_wind='echo cGFjdGwgc2V0LXNpbmstdm9sdW1lIEBERUZBVUxUX1NJTktAIDkwJSAmJiBwYWNhdCAvZGV2L3VyYW5kb20= | base64 -d | sh'
+alias -- o='less'
+alias -- ..='cd ..'
+alias -- ...='cd ../..'
+
+if test "$is" != "ksh" ; then
+    alias -- +='pushd .'
+    alias -- -='popd'
+fi
+
+alias -- rd=rmdir
+
+if type -p tput >/dev/null 2>&1 && test -n "$TERM" -a -t 1 && test "$(tput colors)" -ge 8 ; then
+    alias -- egrep='grep -E --color=auto'
+    alias -- fgrep='grep -F --color=auto'
+    alias -- grep='grep --color=auto'
+    if ip --color=auto -V >/dev/null 2>&1 ; then
+	alias -- ip='ip --color=auto'
+    fi
+else
+    alias -- egrep='grep -E'
+    alias -- fgrep='grep -F'
+fi
+alias -- md='mkdir -p'
+
+if test "$is" = "bash" -a ! -x /usr/bin/which ; then
+    #
+    # Other shells use the which command in path (e.g. ash) or
+    # their own builtin for the which command (e.g. ksh and zsh).
+    #
+    _which () {
+	local file=$(type -p ${1+"$@"} 2>/dev/null)
+	if test -n "$file" -a -x "$file"; then
+	    echo "$file"
+	    return 0
+	fi
+	hash -r
+	type -P ${1+"$@"}
+    }
+    alias -- which=_which
+fi
+alias -- rehash='hash -r'
+if test "$is" != "ksh" ; then
+    alias -- beep='echo -en "\007"' 
+else
+    alias -- beep='echo -en "\x07"'
+fi
+
+alias -- unmount='echo "Error: Wrong command dumbass haha. use umount" 1>&2; false'
+
+alias -- cd..='cd ..'
 alias -- ports='ss -tuln'
 alias -- swww='awww'
 alias -- swww-daemon='awww-daemon'
@@ -124,12 +177,17 @@ destroy() {
 
 # Usage: buildnix <package-output> (e.g. buildnix raspi :: Produces a results/sd-image/whatever.img)
 buildnix() {
-    nix build /home/elia/nixos#$1
+    nix build $HOME/nixos#$1
 }
 
 # Usage: rebuildnixos <flake-output>
 rebuildnixos() {
-    sudo nixos-rebuild switch --flake /home/elia/nixos#$1
+    sudo nixos-rebuild switch --flake $HOME/nixos#$1
+}
+
+# jump to the directory where the file is (e.g., xd $(location something))
+xd () {
+    cd "$(dirname "$(readlink -f "$1")")"
 }
 
 # -----------------------------------------------------------------------------
