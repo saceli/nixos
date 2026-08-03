@@ -26,7 +26,7 @@
 
         ipv4 = {
           method = "manual";
-          addresses = "192.168.1.33/24";
+          addresses = "192.168.178.33/24";
           gateway = "192.168.178.1";
         };
         
