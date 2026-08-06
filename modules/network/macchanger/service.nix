@@ -6,12 +6,15 @@ let
 
     iface=""
 
-    for i in /sys/class/net/*; do
-      i=$(basename "$i")
+    for path in /sys/class/net/*; do
+      i=$(basename "$path")
 
       # Skip loopback
       [ "$i" = "lo" ] && continue
 
+      # Skip interfaces that are not active
+      [ "$(cat "/sys/class/net/$i/operstate")" = "up" ] || continue
+ 
       # Skip virtual interfaces
       [ -d "/sys/class/net/$i/device" ] || continue
 
@@ -20,7 +23,7 @@ let
     done
 
     if [ -z "$iface" ]; then
-      echo "No physical network interface found."
+      echo "No active physical network interface found."
       exit 1
     fi
 
