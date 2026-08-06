@@ -11,7 +11,7 @@
     user.signingKey = "~/.ssh/github";
     gpg.format = "ssh";
     commit.gpgSign = true;
-    gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
+    gpg.ssh.allowedSignersFile = "../../../srv/allowed_signers";
     init.defaultBranch = "main";
   };
 }
