@@ -14,7 +14,7 @@
   '';
 in {
   services.caddy.virtualHosts."search.home" = {
-    listenAddresses = [homelab-ip];
+    listenAddresses = [ "0.0.0.0" ];
 
     serverAliases = [
       "search.lan"

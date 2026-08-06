@@ -281,7 +281,6 @@
         # Network
         modules.network.firewall
         modules.network.host
-        modules.network.macchanger
         modules.network.networkmanager
 
         # Services

@@ -11,4 +11,9 @@
   };
 
   networking.firewall.allowedTCPPorts = [80 443];
+
+  systemd.services.caddy = {
+    wants = [ "network-online.target" ];
+    after = [ "network-online.target" ];
+  };
 }

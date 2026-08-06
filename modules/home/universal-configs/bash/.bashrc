@@ -25,7 +25,6 @@ shopt -s extglob
 shopt -s globstar
 shopt -s checkwinsize
 shopt -s nullglob
-set -o vi 
 
 # -----------------------------------------------------------------------------
 # Aliases
