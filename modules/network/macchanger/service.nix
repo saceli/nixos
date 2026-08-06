@@ -12,9 +12,6 @@ let
       # Skip loopback
       [ "$i" = "lo" ] && continue
 
-      # Skip interfaces that are not active
-      [ "$(cat "/sys/class/net/$i/operstate")" = "up" ] || continue
- 
       # Skip virtual interfaces
       [ -d "/sys/class/net/$i/device" ] || continue
 
