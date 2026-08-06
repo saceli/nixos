@@ -140,18 +140,10 @@ sudo chown root:root /root/secrets/home-wifi.env
 `modules.services.searxng` requires a .env file for its `SEARX_SECRET_KEY` value, since it shouldn't be copied to the nix store, just use a local file, here's how to create it
 
 ```bash
-<<<<<<< HEAD
-sudo mkdir -p /root/secrets
-sudo echo "SEARXNG_SECRET=$(openssl rand -hex 64)" > /root/secrets/searxng.env # NOTE: You can also use `openssl rand -hex 32`, i use 64 bytes for extra safety, but really it doesn't matter 
-# must be 0400 root:root 
-sudo chmod 400 /root/secrets/searxng.env
-sudo chown root:root /root/secrets/searxng.env
-=======
 mkdir -p ~/.secrets
 echo 'SEARX_SECRET_KEY='$(openssl rand -hex 32) > ~/.secrets/searxng.env
 chmod 0400 ~/.secrets/searxng.env
 chown $USER:users ~/.secrets/searxng.env
->>>>>>> ed6f88e (feat: add fully functional searxng module)
 ```
 
 
