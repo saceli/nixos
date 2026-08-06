@@ -3,7 +3,7 @@
 
   networking.networkmanager.ensureProfiles = {
     environmentFiles = [
-      "/run/secrets/wifi.env"
+      "/root/secrets/home-wifi.env"
     ];
 
     profiles = {
