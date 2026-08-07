@@ -46,7 +46,7 @@
       networking.hostName = "searxng-guest";
       networking.useDHCP = false;
 
-      networking.firewall.allowedTCPPorts = [ 8080 ];
+      networking.firewall.allowedTCPPorts = [ 8080 22 ];
 
       services.timesyncd = {
         enable = true;
