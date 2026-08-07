@@ -1,3 +1,4 @@
+# modules/services/searxng/microvm.nix
 { ... }:
 
 {
@@ -11,10 +12,28 @@
         mem = 512;
         storeOnDisk = false;
 
+        shares = [
+          {
+            tag = "ro-store";
+            source = "/nix/store";
+            mountPoint = "/nix/store";
+          }
+        ];
+
         forwardPorts = [
           { from = "host"; host.port = 8001; guest.port = 8080; protocol = "tcp"; }
         ];
       };
+
+      fileSystems."/" = {
+        device = "tmpfs";
+        fsType = "tmpfs";
+        options = [ "defaults" "mode=755" "size=50%" ];
+      };
+
+      systemd.tmpfiles.rules = [
+        "d /var/lib/containers 0755 root root -"
+      ];
 
       system.stateVersion = "26.05";
       nixpkgs.hostPlatform = "aarch64-linux";
