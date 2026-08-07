@@ -29,6 +29,10 @@
       flake = false; # just a repository with files not a flake
     };
 
+    quadlet-nix = {
+      url = "github:SEIAROTg/quadlet-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -39,6 +43,7 @@
     iloader,
     dms-plugin-registry,
     wallpapers,
+    quadlet-nix,
     ...
   }:
   let
@@ -248,6 +253,7 @@
           nixpkgs
           self
           iloader
+	  quadlet-nix
           hjem
           dms-plugin-registry;
       };
@@ -258,6 +264,8 @@
         modules.apps.git
         modules.apps.bash
         modules.apps.ssh
+        modules.apps.podman
+
 
         # Boot
         modules.boot.kernel
