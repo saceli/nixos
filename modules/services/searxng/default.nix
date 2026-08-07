@@ -1,9 +1,7 @@
 {
   imports = [
-    ./settings.nix
+    ./microvm.nix
     ./unbound.nix
     ./caddy.nix
-    ./config.nix
-    ./engines.nix
   ];
 }

@@ -29,10 +29,11 @@
       flake = false; # just a repository with files not a flake
     };
 
-    quadlet-nix = {
-      url = "github:SEIAROTg/quadlet-nix";
+    microvm = {
+      url = "github:astro/microvm.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
   };
 
   outputs = {
@@ -43,7 +44,6 @@
     iloader,
     dms-plugin-registry,
     wallpapers,
-    quadlet-nix,
     ...
   }:
   let
@@ -253,7 +253,6 @@
           nixpkgs
           self
           iloader
-	  quadlet-nix
           hjem
           dms-plugin-registry;
       };
@@ -292,6 +291,8 @@
         modules.network.networkmanager
 
         # Services
+        microvm.nixosModules.host
+
         modules.services.auditd
         modules.services.journald
         modules.services.pipewire
