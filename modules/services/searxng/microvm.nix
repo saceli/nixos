@@ -6,7 +6,6 @@
       imports = [ ./oci-containers.nix ];
 
       microvm = {
-        enable = true;
         hypervisor = "qemu";
         vcpu = 1;
         mem = 512;
