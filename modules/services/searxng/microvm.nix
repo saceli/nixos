@@ -25,7 +25,7 @@
         ];
 
         forwardPorts = [
-          { from = "host"; host.port = 8001; guest.port = 8080; protocol = "tcp"; }
+          { from = "host"; host.port = 8001; guest.port = 8080; proto = "tcp"; }
         ];
       };
 
