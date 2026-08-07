@@ -9,6 +9,7 @@
       gedit = { imports = [ ./apps/gedit ]; };
       git = { imports = [ ./apps/git ]; };
       nautilus = { imports = [ ./apps/nautilus ]; };
+      podman = { imports = [ ./apps/podman ]; };
       ssh = { imports = [ ./apps/ssh ]; };
       vlc = { imports = [ ./apps/vlc ]; };
       zathura = { imports = [ ./apps/zathura ]; };
