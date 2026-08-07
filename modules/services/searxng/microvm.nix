@@ -1,4 +1,3 @@
-# modules/services/searxng/microvm.nix
 { ... }:
 
 {
@@ -11,6 +10,11 @@
         vcpu = 1;
         mem = 512;
         storeOnDisk = false;
+
+        interfaces = [{
+          type = "user";
+          id = "eth0";
+        }];
 
         shares = [
           {
@@ -40,7 +44,7 @@
 
       networking.hostName = "searxng-guest";
       networking.useDHCP = false;
-      networking.interfaces.eth0.useDHCP = true;
+
       networking.firewall.allowedTCPPorts = [ 8080 ];
 
       services.timesyncd = {
