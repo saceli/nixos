@@ -14,6 +14,7 @@
         interfaces = [{
           type = "user";
           id = "eth0";
+          mac = "02:00:00:00:00:01";
         }];
 
         shares = [
