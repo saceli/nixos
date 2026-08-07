@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 
 {
   microvm.vms.searxng = {
@@ -52,6 +52,17 @@
         enable = true;
         servers = [ "time.cloudflare.com" ];
       };
+
+      microvm.vsock.cid = 100;
+
+      services.openssh = {
+        enable = true;
+        settings.PermitRootLogin = "prohibit-password";
+        settings.PasswordAuthentication = false;
+      };
+
+      users.users.root.openssh.authorizedKeys.keys = 
+        lib.splitString "\n" (builtins.readFile ../../../srv/authorized_keys);
     };
   };
 }
