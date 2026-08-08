@@ -59,10 +59,8 @@
         enable = true;
         settings.PermitRootLogin = "prohibit-password";
         settings.PasswordAuthentication = false;
-        startWhenNeeded = false; #who knows fuck shit fuck
+        startWhenNeeded = true;
       };
-
-      ssh.enable = true;
 
       users.users.root.openssh.authorizedKeys.keys = 
         lib.splitString "\n" (builtins.readFile ../../../srv/microvm-authorized_keys);
