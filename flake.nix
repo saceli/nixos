@@ -43,6 +43,7 @@
     lanzaboote,
     iloader,
     dms-plugin-registry,
+    microvm,
     wallpapers,
     ...
   }:
@@ -254,6 +255,7 @@
           self
           iloader
           hjem
+	  microvm
           dms-plugin-registry;
       };
 
