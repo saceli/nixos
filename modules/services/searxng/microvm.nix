@@ -59,6 +59,7 @@
         enable = true;
         settings.PermitRootLogin = "prohibit-password";
         settings.PasswordAuthentication = false;
+        startWhenNeeded = true;
       };
 
       users.users.root.openssh.authorizedKeys.keys = 
