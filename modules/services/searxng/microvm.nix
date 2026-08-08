@@ -63,7 +63,7 @@
       };
 
       users.users.root.openssh.authorizedKeys.keys = 
-        lib.splitString "\n" (builtins.readFile ../../../srv/authorized_keys);
+        lib.splitString "\n" (builtins.readFile ../../../srv/microvm-authorized_keys);
     };
   };
 }
