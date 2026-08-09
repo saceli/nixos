@@ -12,9 +12,8 @@
         storeOnDisk = false;
 
         interfaces = [{
-          type = "user";
           id = "eth0";
-          mac = "02:00:00:00:00:01";
+          mac = "00:00:00:00:00:01";
         }];
 
         shares = [
@@ -52,6 +51,7 @@
         enable = true;
         servers = [ "time.cloudflare.com" ];
       };
+
 
       microvm.vsock.cid = 100;
 
