@@ -1,5 +1,8 @@
 { lib, ... }:
 
+let
+  index = 1; # Change for every vm
+in
 {
   microvm.vms.searxng = {
     config = {
@@ -13,7 +16,7 @@
 
         interfaces = [{
 	        type = "tap";
-          id = "vm1";
+          id = "vm${toString index}";
           mac = "00:00:00:00:00:01";
         }];
 
@@ -48,7 +51,7 @@
       networking.hostName = "searxng-guest";
       networking.useDHCP = false;
 
-      networking.firewall.allowedTCPPorts = [ 8080 22 ];
+      networking.firewall.allowedTCPPorts = [ 8080 ];
 
       services.timesyncd = {
         enable = true;

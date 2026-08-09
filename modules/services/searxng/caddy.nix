@@ -22,9 +22,11 @@ in {
       "www.search.home"
     ];
 
-    extraConfig = ''
+    # since searxng is just http, we don't route the port via nat.forwardPorts, since thats for raw layer 3/4
+    # caddy handles http so we save ourselves the hassle and just raw-route the vm ip to port 8001 on the host's ip
+    extraConfig = '' 
       ${securityHeaders}
-      reverse_proxy 127.0.0.1:8001
+      reverse_proxy 10.0.0.1:8080
       tls internal
     '';
   };
