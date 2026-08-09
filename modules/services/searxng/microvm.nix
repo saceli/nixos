@@ -12,8 +12,8 @@
         storeOnDisk = false;
 
         interfaces = [{
-	  type = "user";
-          id = "eth0";
+	        type = "tap";
+          id = "vm1";
           mac = "00:00:00:00:00:01";
         }];
 
@@ -22,6 +22,8 @@
             tag = "ro-store";
             source = "/nix/store";
             mountPoint = "/nix/store";
+            proto = "virtiofs";
+            readOnly = true;
           }
         ];
 
