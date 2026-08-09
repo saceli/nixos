@@ -12,6 +12,7 @@
         storeOnDisk = false;
 
         interfaces = [{
+	  type = "user";
           id = "eth0";
           mac = "00:00:00:00:00:01";
         }];

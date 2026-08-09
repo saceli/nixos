@@ -76,7 +76,6 @@ in
     extraOptions = [
       "--read-only"
       "--cap-drop=ALL"
-      "--no-new-privileges"
       "--tmpfs=/tmp:rw,size=100M"
       "--tmpfs=/run/searxng:rw,size=10M,mode=755"
       "--health-cmd=wget --spider -q http://localhost:8080/healthz || exit 1"
