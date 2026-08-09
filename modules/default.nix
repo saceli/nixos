@@ -27,6 +27,7 @@
       users = { imports = [ ./boot/users ]; };
 
     };
+    cfg = { imports = [ ./cfg ]; };
 
     core = {
       nix = { imports = [ ./core/nix ]; };
@@ -63,6 +64,7 @@
       bluetooth = { imports = [ ./services/bluetooth ]; };
       caddy = { imports = [ ./services/caddy ]; };
       journald = { imports = [ ./services/journald ]; };
+      microvm-network = { imports = [ ./services/microvm-network ]; };
       pipewire = { imports = [ ./services/pipewire ]; };
       run0 = { imports = [ ./services/run0 ]; };
       searxng = { imports = [ ./services/searxng ]; };
