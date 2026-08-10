@@ -11,4 +11,25 @@
 
   };
 
+  options.cfg.homelab.microvm = {
+    hostPlatform = lib.mkOption {
+      type = lib.types.str;
+      default = "aarch64-linux";
+      description = "Host platform for MicroVMs";
+    };
+
+    stateVersion = lib.mkOption {
+      type = lib.types.str;
+      default = "26.05"; # do not edit! ever!
+      description = "NixOS state version for MicroVMs";
+    };
+
+    authorizedKeysFile = lib.mkOption {
+      type = lib.types.path;
+      default = "~/nixos/srv/microvm-authorized_keys"
+      description = "SSH authorized keys file for MicroVMs";
+    };
+  };
+
+
 }
