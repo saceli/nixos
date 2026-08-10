@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   settings = {
@@ -17,7 +22,9 @@ let
       infinite_scroll = true;
       center_alignment = true;
       default_theme = "simple";
-      theme_args = { simple_style = "dark"; };
+      theme_args = {
+        simple_style = "dark";
+      };
       results_on_new_tab = false;
       search_on_category_select = false;
       url_formatting = "full";
@@ -51,7 +58,7 @@ let
       "Unit converter plugin"
       "Tracker URL remover"
     ];
-    engines = config.searxng.engines or [];
+    engines = config.searxng.engines or [ ];
   };
 
   settingsFile = pkgs.writeText "searxng-settings.yml" (builtins.toJSON settings);
@@ -69,10 +76,21 @@ in
     ports = [ "0.0.0.0:8080:8080" ];
     volumes = [
       "${settingsFile}:/etc/searxng/settings.yml:ro"
+      "/run/secrets/searxng_secret_key:/etc/searxng/secret_key:ro"
     ];
     environment = {
       INSTANCE_NAME = "SearXNG";
     };
+
+    entrypoint = "sh";
+    cmd = [
+      "-c"
+      ''
+        export SEARXNG_SECRET_KEY=$(cat /etc/searxng/secret_key)
+        exec /usr/local/searxng/dockerfiles/docker-entrypoint.sh
+      ''
+    ];
+
     extraOptions = [
       "--read-only"
       "--cap-drop=ALL"
@@ -87,7 +105,14 @@ in
   };
 
   systemd.services."podman-searxng" = {
-    after = [ "network-online.target" ];
-    wants = [ "network-online.target" ];
+    after = [
+      "network-online.target"
+      "sops-nix.service"
+    ];
+    wants = [
+      "network-online.target"
+      "sops-nix.service"
+    ];
   };
+
 }
