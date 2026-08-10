@@ -15,9 +15,10 @@ in
         storeOnDisk = false;
 
         interfaces = [{
-	        type = "tap";
+          type = "tap";
           id = "vm${toString index}";
           mac = "00:00:00:00:00:01";
+	  tap.vhost = true;
         }];
 
         shares = [
@@ -30,9 +31,6 @@ in
           }
         ];
 
-        forwardPorts = [
-          { from = "host"; host.port = 8001; guest.port = 8080; proto = "tcp"; }
-        ];
       };
 
       fileSystems."/" = {
