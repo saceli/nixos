@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 
 let
   index = 1;
