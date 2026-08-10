@@ -195,8 +195,6 @@
     # no need to enable switch-to-configuration.pl
     system.switch.enable = lib.mkDefault false;
 
-    users.users.root.openssh.authorizedKeys.keys = lib.splitString "\n" (
-      builtins.readFile config.cfg.homelab.microvm.authorizedKeysFile
-    );
+    users.users.root.openssh.authorizedKeys.keys = config.cfg.homelab.microvm.authorizedKeys;
   };
 }
