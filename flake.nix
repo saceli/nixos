@@ -120,6 +120,8 @@
         };
 
         modules = [
+          modules.cfg
+
           # Boot
           lanzaboote.nixosModules.lanzaboote
           modules.boot.emulated
@@ -193,6 +195,8 @@
       modules = [
         "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
 
+	modules.cfg
+
         # Boot
         modules.boot.emulated
         modules.boot.kernel
@@ -261,6 +265,8 @@
 
       modules = [
 
+        modules.cfg
+
         # Apps
         modules.apps.git
         modules.apps.bash
@@ -294,6 +300,7 @@
 
         # Services
         microvm.nixosModules.host
+	modules.services.microvm-network
 
         modules.services.auditd
         modules.services.journald
