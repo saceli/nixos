@@ -5,7 +5,8 @@
 
     specialArgs = {
       inherit
-        wallpapers;
+        wallpapers
+        ;
     };
 
     users = {
@@ -18,7 +19,7 @@
           ./wallpapers.nix
           ../universal-configs
         ];
-      }; 
-    }; 
-  }; 
+      };
+    };
+  };
 }

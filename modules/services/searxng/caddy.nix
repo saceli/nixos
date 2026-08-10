@@ -2,7 +2,8 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   homelab-ip = lib.strings.trim (builtins.readFile ../../../srv/homelab-ip.txt);
   securityHeaders = ''
     header {
@@ -12,7 +13,8 @@
       Referrer-Policy "strict-origin-when-cross-origin"
     }
   '';
-in {
+in
+{
   services.caddy.virtualHosts."search.home" = {
     listenAddresses = [ "0.0.0.0" ];
 
@@ -24,7 +26,7 @@ in {
 
     # since searxng is just http, we don't route the port via nat.forwardPorts, since thats for raw layer 3/4
     # caddy handles http so we save ourselves the hassle and just raw-route the vm ip to port 8001 on the host's ip
-    extraConfig = '' 
+    extraConfig = ''
       ${securityHeaders}
       reverse_proxy 10.0.0.1:8080
       tls internal

@@ -1,5 +1,5 @@
 {
-  imports =[
+  imports = [
     ./enable.nix
     ./mime.nix
   ];

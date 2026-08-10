@@ -200,7 +200,7 @@
     # mkpasswd for hashfile creation
     pkgs.mkpasswd
 
-    # ncdu for checking storage (i use this everywhere 
+    # ncdu for checking storage (i use this everywhere
     # everytime so it makes sense to include in the system packages)
     pkgs.ncdu
 

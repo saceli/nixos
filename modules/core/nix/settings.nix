@@ -35,13 +35,13 @@
   };
 
   # do not automatically run gc
-  nix.gc.automatic = false; 
+  nix.gc.automatic = false;
   # for servers use:
   #nix.gc = {
-	#  automatic = true;
-	#  dates = "weekly"; # Runs once a week (e.g., "Mon *-*-* 02:00" for 2 AM Monday)
-	#  options = "--delete-older-than 15d"; # Deletes packages and generations older than 15 days
-	#  persistent = true; # Ensures GC runs later if the server is powered down during the scheduled time
-	#};
+  #  automatic = true;
+  #  dates = "weekly"; # Runs once a week (e.g., "Mon *-*-* 02:00" for 2 AM Monday)
+  #  options = "--delete-older-than 15d"; # Deletes packages and generations older than 15 days
+  #  persistent = true; # Ensures GC runs later if the server is powered down during the scheduled time
+  #};
 
 }

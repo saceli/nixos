@@ -2,7 +2,8 @@
   # enable pipewire
   services.pipewire.enable = true;
 
-  services.pipewire.extraConfig.pipewire = { # without this the audio sounds drunk or with autotune, for some reason...
+  services.pipewire.extraConfig.pipewire = {
+    # without this the audio sounds drunk or with autotune, for some reason...
     "91-audio-rates" = {
       "context.properties" = {
         "default.clock.rate" = 48000;

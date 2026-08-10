@@ -1,6 +1,6 @@
 {
   programs.bash = {
     enableLsColors = true;
-    completion.enable = true;    
+    completion.enable = true;
   };
 }

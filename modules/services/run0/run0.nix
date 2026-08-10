@@ -15,7 +15,7 @@
   # do not replace the sudo package, for some reason... (i copy pasted this)
   environment.shellAliases.sudo = "run0";
 
-  # NOTE: you cant make run0 persist for 5 minutes with AUTH_KEEP in polkit rules 
+  # NOTE: you cant make run0 persist for 5 minutes with AUTH_KEEP in polkit rules
   #       for some reason i cant remember, if you can do it contact me i beg you
 
 }

@@ -1,8 +1,10 @@
-# BROKEN!
+# TODO: BROKEN!
 
-{lib, ...}: let
+{ lib, ... }:
+let
   homelab-ip = lib.strings.trim (builtins.readFile ../../../srv/homelab-ip.txt);
-in {
+in
+{
   services.unbound.settings.server = {
     # Prevent leaking local names to the internet
     local-zone = [

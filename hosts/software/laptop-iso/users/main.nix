@@ -10,7 +10,13 @@
     isNormalUser = true;
     password = "nixos"; # Password: nixos
 
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" "kvm" "dialout" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "libvirtd"
+      "kvm"
+      "dialout"
+    ];
 
   };
 

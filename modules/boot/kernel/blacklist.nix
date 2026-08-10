@@ -143,12 +143,12 @@ let
 
     # usb video class devices
     # can blacklist unless using webcam
-    "uvcvideo" 
-    
-    # no more microphone (run cat /proc/asound/modules and 
+    "uvcvideo"
+
+    # no more microphone (run cat /proc/asound/modules and
     # take the string after the number and blacklist that
-    # e.g. 
-    # $ cat /proc/asound/modules 
+    # e.g.
+    # $ cat /proc/asound/modules
     # 0 snd_hda_intel
     # then blacklist snd_hda_intel
     "snd_hda_intel"

@@ -2,15 +2,27 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 # yada yada yada. fuck you! edit this all u want
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
 
-
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" "rtsx_usb_sdmmc" ];
+  boot.initrd.availableKernelModules = [
+    "nvme"
+    "xhci_pci"
+    "ahci"
+    "usbhid"
+    "usb_storage"
+    "sd_mod"
+    "rtsx_usb_sdmmc"
+  ];
   boot.kernelModules = [ "kvm-amd" ];
-  boot.kernelParams = [ 
-    
+  boot.kernelParams = [
+
     # For some reason you cannot 'nixos-rebuild switch' without this...
     "systemd.gpt_auto=no"
 
@@ -26,24 +38,28 @@
     "nvme_core.default_ps_max_latency_us=0"
   ];
 
-  fileSystems."/" =
-    { device = "/dev/mapper/nixosroot";
-      fsType = "xfs";
-    };
+  fileSystems."/" = {
+    device = "/dev/mapper/nixosroot";
+    fsType = "xfs";
+  };
 
-  boot.initrd.luks.devices."nixosroot".device = "/dev/disk/by-uuid/778cb3cd-345c-4920-ad23-93ea93d5b278";
-  boot.initrd.luks.devices."nixosroot".preLVM = true; 
+  boot.initrd.luks.devices."nixosroot".device =
+    "/dev/disk/by-uuid/778cb3cd-345c-4920-ad23-93ea93d5b278";
+  boot.initrd.luks.devices."nixosroot".preLVM = true;
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/05FA-F4DC";
-      fsType = "vfat";
-      options = [ "fmask=0077" "dmask=0077" ];
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/05FA-F4DC";
+    fsType = "vfat";
+    options = [
+      "fmask=0077"
+      "dmask=0077"
+    ];
+  };
 
-  fileSystems."/home" =
-    { device = "/dev/mapper/nixoshome";
-      fsType = "xfs";
-    };
+  fileSystems."/home" = {
+    device = "/dev/mapper/nixoshome";
+    fsType = "xfs";
+  };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

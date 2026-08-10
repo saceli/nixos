@@ -4,7 +4,7 @@
   options.searxng.engines = lib.mkOption {
     type = lib.types.listOf lib.types.attrs;
     description = "SearXNG search engines configuration";
-    default = [];
+    default = [ ];
   };
 
   config.searxng.engines = lib.mapAttrsToList (name: value: { inherit name; } // value) {

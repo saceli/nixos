@@ -36,78 +36,79 @@
 
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    hjem,
-    lanzaboote,
-    iloader,
-    dms-plugin-registry,
-    microvm,
-    wallpapers,
-    ...
-  }:
-  let
-    system = "x86_64-linux";
+  outputs =
+    {
+      self,
+      nixpkgs,
+      hjem,
+      lanzaboote,
+      iloader,
+      dms-plugin-registry,
+      microvm,
+      wallpapers,
+      ...
+    }:
+    let
+      system = "x86_64-linux";
 
-    pkgs = import nixpkgs {
-      inherit system;
-      config.allowUnfree = true;
-    };
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
 
-    modules = import ./modules;
-    hosts = import ./hosts;
-  in {
-    devShells.${system}.default = pkgs.mkShell {
-      packages = with pkgs; [
-        # Editor
-        vscodium
+      modules = import ./modules;
+      hosts = import ./hosts;
+    in
+    {
+      devShells.${system}.default = pkgs.mkShell {
+        packages = with pkgs; [
+          # Editor
+          vscodium
 
-        # General tools
-        git
-        direnv
+          # General tools
+          git
+          direnv
 
-        # Nix
-        nil
-        nixfmt-rfc-style
-        statix
-        deadnix
+          # Nix
+          nil
+          nixfmt-rfc-style
+          statix
+          deadnix
 
-        # Shell
-        shfmt
-        shellcheck
+          # Shell
+          shfmt
+          shellcheck
 
-        # Misc
-        jq
-        ripgrep
-        fd
-        just
-      ];
+          # Misc
+          jq
+          ripgrep
+          fd
+          just
+        ];
 
-      shellHook = ''
-        echo "╭─────────────────────────────────────────────╮"
-        echo "│       Saceli Development Environment        │"
-        echo "╰─────────────────────────────────────────────╯"
-        echo
-        echo "  System   : ${system}"
-        echo "  Nix      : $(nix --version)"
-        echo "  Git      : $(git --version | cut -d' ' -f3)"
-        echo "  Shell    : $SHELL"
-        echo "  Flake    : $(basename "$PWD")"
-        echo "  Directory: $PWD"
-        echo
+        shellHook = ''
+          echo "╭─────────────────────────────────────────────╮"
+          echo "│       Saceli Development Environment        │"
+          echo "╰─────────────────────────────────────────────╯"
+          echo
+          echo "  System   : ${system}"
+          echo "  Nix      : $(nix --version)"
+          echo "  Git      : $(git --version | cut -d' ' -f3)"
+          echo "  Shell    : $SHELL"
+          echo "  Flake    : $(basename "$PWD")"
+          echo "  Directory: $PWD"
+          echo
 
-        if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-          echo "  Branch   : $(git branch --show-current)"
-          echo "  Status   : $(git status --short | wc -l) changed file(s)"
-        fi
-      '';
-    };
+          if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+            echo "  Branch   : $(git branch --show-current)"
+            echo "  Status   : $(git status --short | wc -l) changed file(s)"
+          fi
+        '';
+      };
 
-    # ╞══════════════════════════════╡ LAPTOP-AMD64 ╞═══════════════════════════════╡
+      # ╞══════════════════════════════╡ LAPTOP-AMD64 ╞═══════════════════════════════╡
 
-    nixosConfigurations.laptop-amd64 =
-      nixpkgs.lib.nixosSystem {
+      nixosConfigurations.laptop-amd64 = nixpkgs.lib.nixosSystem {
         inherit system;
 
         specialArgs = {
@@ -116,7 +117,8 @@
             iloader
             hjem
             wallpapers
-            dms-plugin-registry;
+            dms-plugin-registry
+            ;
         };
 
         modules = [
@@ -180,147 +182,148 @@
         ];
       };
 
-    nixosConfigurations.laptop-iso = nixpkgs.lib.nixosSystem {
-      inherit system;
+      nixosConfigurations.laptop-iso = nixpkgs.lib.nixosSystem {
+        inherit system;
 
-      specialArgs = {
-        inherit
-          self
-          iloader
-          hjem
-          wallpapers
-          dms-plugin-registry;
+        specialArgs = {
+          inherit
+            self
+            iloader
+            hjem
+            wallpapers
+            dms-plugin-registry
+            ;
+        };
+
+        modules = [
+          "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
+
+          modules.cfg
+
+          # Boot
+          modules.boot.emulated
+          modules.boot.kernel
+          modules.boot.localization
+          modules.boot.malloc
+          modules.boot.systemd-boot
+
+          # Core
+          modules.core.nix
+          modules.core.packages
+          modules.core.state
+
+          # Applications
+          modules.apps.brave
+          modules.apps.git
+          modules.apps.zathura
+          modules.apps.bash
+          modules.apps.eog
+          modules.apps.fileroller
+          modules.apps.gedit
+          modules.apps.nautilus
+          modules.apps.ssh
+          modules.apps.vlc
+
+          # Desktop
+          modules.desktop.dms-niri
+
+          # Hardware
+          modules.hardware
+
+          # Networking
+          modules.network.host
+          modules.network.networkmanager
+
+          # Services
+          modules.services.bluetooth
+          modules.services.pipewire
+          modules.services.run0
+          modules.services.timesyncd
+          modules.services.upower
+
+          # Host-specific
+          hosts.hardware.laptop-iso
+          hosts.software.laptop-iso
+
+          # Home
+          hjem.nixosModules.default
+          modules.home.laptop-iso
+        ];
       };
 
-      modules = [
-        "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
+      packages.${system}.laptop-iso = self.nixosConfigurations.laptop-iso.config.system.build.isoImage;
 
-	modules.cfg
+      nixosConfigurations.raspi = nixpkgs.lib.nixosSystem {
+        system = "aarch64-linux";
 
-        # Boot
-        modules.boot.emulated
-        modules.boot.kernel
-        modules.boot.localization
-        modules.boot.malloc
-        modules.boot.systemd-boot
+        specialArgs = {
+          inherit
+            nixpkgs
+            self
+            iloader
+            hjem
+            microvm
+            dms-plugin-registry
+            ;
+        };
 
-        # Core
-        modules.core.nix
-        modules.core.packages
-        modules.core.state
+        modules = [
 
-        # Applications
-        modules.apps.brave
-        modules.apps.git
-        modules.apps.zathura
-        modules.apps.bash
-        modules.apps.eog
-        modules.apps.fileroller
-        modules.apps.gedit
-        modules.apps.nautilus
-        modules.apps.ssh
-        modules.apps.vlc
+          modules.cfg
 
-        # Desktop
-        modules.desktop.dms-niri
+          # Apps
+          modules.apps.git
+          modules.apps.bash
+          modules.apps.ssh
+          modules.apps.podman
 
-        # Hardware
-        modules.hardware
+          # Boot
+          modules.boot.kernel
+          modules.boot.localization
+          modules.boot.malloc
+          modules.boot.uboot
+          modules.boot.users
 
-        # Networking
-        modules.network.host
-        modules.network.networkmanager
+          # Core
+          modules.core.nix
+          modules.core.packages
+          modules.core.state
 
-        # Services
-        modules.services.bluetooth
-        modules.services.pipewire
-        modules.services.run0
-        modules.services.timesyncd
-        modules.services.upower
+          # Hardware
+          modules.hardware
 
-        # Host-specific
-        hosts.hardware.laptop-iso
-        hosts.software.laptop-iso
+          # Home
+          hjem.nixosModules.default
+          modules.home.raspi
 
-        # Home
-        hjem.nixosModules.default
-        modules.home.laptop-iso
-      ];
-    };
+          # Network
+          modules.network.firewall
+          modules.network.host
+          modules.network.networkmanager
 
-    packages.${system}.laptop-iso = self.nixosConfigurations.laptop-iso.config.system.build.isoImage;
+          # Services
+          microvm.nixosModules.host
+          modules.services.microvm-network
 
-    nixosConfigurations.raspi = nixpkgs.lib.nixosSystem {
-      system = "aarch64-linux";
+          modules.services.auditd
+          modules.services.journald
+          modules.services.pipewire
+          modules.services.run0
+          modules.services.sshd
+          modules.services.timesyncd
+          modules.services.upower
+          modules.services.caddy
+          modules.services.unbound
+          modules.services.searxng
 
-      specialArgs = {
-        inherit
-          nixpkgs
-          self
-          iloader
-          hjem
-	  microvm
-          dms-plugin-registry;
+          # Host-specific
+          hosts.software.raspi
+          hosts.hardware.raspi
+
+        ];
       };
 
-      modules = [
+      packages.aarch64-linux.raspi = self.nixosConfigurations.raspi.config.system.build.sdImage;
 
-        modules.cfg
-
-        # Apps
-        modules.apps.git
-        modules.apps.bash
-        modules.apps.ssh
-        modules.apps.podman
-
-
-        # Boot
-        modules.boot.kernel
-        modules.boot.localization
-        modules.boot.malloc
-        modules.boot.uboot
-        modules.boot.users
-
-        # Core
-        modules.core.nix
-        modules.core.packages
-        modules.core.state
-
-        # Hardware
-        modules.hardware
-
-        # Home
-        hjem.nixosModules.default
-        modules.home.raspi
-
-        # Network
-        modules.network.firewall
-        modules.network.host
-        modules.network.networkmanager
-
-        # Services
-        microvm.nixosModules.host
-	modules.services.microvm-network
-
-        modules.services.auditd
-        modules.services.journald
-        modules.services.pipewire
-        modules.services.run0
-        modules.services.sshd
-        modules.services.timesyncd
-        modules.services.upower
-        modules.services.caddy
-        modules.services.unbound
-        modules.services.searxng
-
-        # Host-specific
-        hosts.software.raspi
-        hosts.hardware.raspi
-
-      ];
     };
-
-    packages.aarch64-linux.raspi = self.nixosConfigurations.raspi.config.system.build.sdImage;
-
-  };
 }
