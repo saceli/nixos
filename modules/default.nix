@@ -1,78 +1,169 @@
 {
 
-
-    apps = {
-      bash = { imports = [ ./apps/bash ]; };
-      brave = { imports = [ ./apps/brave ]; };
-      eog = { imports = [ ./apps/eog ]; };
-      fileroller = { imports = [ ./apps/fileroller ]; };
-      gedit = { imports = [ ./apps/gedit ]; };
-      git = { imports = [ ./apps/git ]; };
-      nautilus = { imports = [ ./apps/nautilus ]; };
-      podman = { imports = [ ./apps/podman ]; };
-      ssh = { imports = [ ./apps/ssh ]; };
-      vlc = { imports = [ ./apps/vlc ]; };
-      zathura = { imports = [ ./apps/zathura ]; };
-
+  apps = {
+    bash = {
+      imports = [ ./apps/bash ];
+    };
+    brave = {
+      imports = [ ./apps/brave ];
+    };
+    eog = {
+      imports = [ ./apps/eog ];
+    };
+    fileroller = {
+      imports = [ ./apps/fileroller ];
+    };
+    gedit = {
+      imports = [ ./apps/gedit ];
+    };
+    git = {
+      imports = [ ./apps/git ];
+    };
+    nautilus = {
+      imports = [ ./apps/nautilus ];
+    };
+    podman = {
+      imports = [ ./apps/podman ];
+    };
+    ssh = {
+      imports = [ ./apps/ssh ];
+    };
+    vlc = {
+      imports = [ ./apps/vlc ];
+    };
+    zathura = {
+      imports = [ ./apps/zathura ];
     };
 
-    boot = {
-      emulated = { imports = [ ./boot/emulated ]; };
-      kernel = { imports = [ ./boot/kernel ]; };
-      localization = { imports = [ ./boot/localization ]; };
-      malloc = { imports = [ ./boot/malloc ]; };
-      secureboot = { imports = [ ./boot/secureboot ]; };
-      systemd-boot = { imports = [ ./boot/systemd-boot ]; };
-      uboot = { imports = [ ./boot/uboot ]; };
-      users = { imports = [ ./boot/users ]; };
+  };
 
+  boot = {
+    emulated = {
+      imports = [ ./boot/emulated ];
     };
-    cfg = { imports = [ ./cfg ]; };
-
-    core = {
-      nix = { imports = [ ./core/nix ]; };
-      packages = { imports = [ ./core/packages ]; };
-      state = { imports = [ ./core/state ]; };
-
+    kernel = {
+      imports = [ ./boot/kernel ];
     };
-
-    desktop = {
-      dms-niri = { imports = [ ./desktop/dms-niri ]; };
-      niri = { imports = [ ./desktop/niri ]; };
-
+    localization = {
+      imports = [ ./boot/localization ];
     };
-    hardware = { imports = [ ./hardware ]; };
-
-    home = {
-      laptop = { imports = [ ./home/laptop ]; };
-      laptop-iso = { imports = [ ./home/laptop-iso ]; };
-      raspi = { imports = [ ./home/raspi ]; };
-      universal-configs = { imports = [ ./home/universal-configs ]; };
-
+    malloc = {
+      imports = [ ./boot/malloc ];
+    };
+    secureboot = {
+      imports = [ ./boot/secureboot ];
+    };
+    systemd-boot = {
+      imports = [ ./boot/systemd-boot ];
+    };
+    uboot = {
+      imports = [ ./boot/uboot ];
+    };
+    users = {
+      imports = [ ./boot/users ];
     };
 
-    network = {
-      firewall = { imports = [ ./network/firewall ]; };
-      host = { imports = [ ./network/host ]; };
-      macchanger = { imports = [ ./network/macchanger ]; };
-      networkmanager = { imports = [ ./network/networkmanager ]; };
+  };
+  cfg = {
+    imports = [ ./cfg ];
+  };
 
+  core = {
+    nix = {
+      imports = [ ./core/nix ];
+    };
+    packages = {
+      imports = [ ./core/packages ];
+    };
+    state = {
+      imports = [ ./core/state ];
     };
 
-    services = {
-      auditd = { imports = [ ./services/auditd ]; };
-      bluetooth = { imports = [ ./services/bluetooth ]; };
-      caddy = { imports = [ ./services/caddy ]; };
-      journald = { imports = [ ./services/journald ]; };
-      microvm-network = { imports = [ ./services/microvm-network ]; };
-      pipewire = { imports = [ ./services/pipewire ]; };
-      run0 = { imports = [ ./services/run0 ]; };
-      searxng = { imports = [ ./services/searxng ]; };
-      sshd = { imports = [ ./services/sshd ]; };
-      timesyncd = { imports = [ ./services/timesyncd ]; };
-      unbound = { imports = [ ./services/unbound ]; };
-      upower = { imports = [ ./services/upower ]; };
+  };
 
+  desktop = {
+    dms-niri = {
+      imports = [ ./desktop/dms-niri ];
     };
+    niri = {
+      imports = [ ./desktop/niri ];
+    };
+
+  };
+  hardware = {
+    imports = [ ./hardware ];
+  };
+
+  home = {
+    laptop = {
+      imports = [ ./home/laptop ];
+    };
+    laptop-iso = {
+      imports = [ ./home/laptop-iso ];
+    };
+    raspi = {
+      imports = [ ./home/raspi ];
+    };
+    universal-configs = {
+      imports = [ ./home/universal-configs ];
+    };
+
+  };
+
+  network = {
+    firewall = {
+      imports = [ ./network/firewall ];
+    };
+    host = {
+      imports = [ ./network/host ];
+    };
+    macchanger = {
+      imports = [ ./network/macchanger ];
+    };
+    networkmanager = {
+      imports = [ ./network/networkmanager ];
+    };
+
+  };
+
+  services = {
+    auditd = {
+      imports = [ ./services/auditd ];
+    };
+    bluetooth = {
+      imports = [ ./services/bluetooth ];
+    };
+    caddy = {
+      imports = [ ./services/caddy ];
+    };
+    journald = {
+      imports = [ ./services/journald ];
+    };
+    microvm-network = {
+      imports = [ ./services/microvm-network ];
+    };
+    pipewire = {
+      imports = [ ./services/pipewire ];
+    };
+    run0 = {
+      imports = [ ./services/run0 ];
+    };
+    searxng = {
+      imports = [ ./services/searxng ];
+    };
+    sshd = {
+      imports = [ ./services/sshd ];
+    };
+    timesyncd = {
+      imports = [ ./services/timesyncd ];
+    };
+    unbound = {
+      imports = [ ./services/unbound ];
+    };
+    upower = {
+      imports = [ ./services/upower ];
+    };
+
+  };
 
 }

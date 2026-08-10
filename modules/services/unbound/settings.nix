@@ -1,10 +1,10 @@
-{...}: {
+{ ... }: {
   services.unbound = {
     enable = true;
 
     settings = {
       server = {
-        interface = ["0.0.0.0"];
+        interface = [ "0.0.0.0" ];
 
         access-control = [
           "127.0.0.0/8 allow"
@@ -53,7 +53,7 @@
   };
 
   networking.firewall = {
-    allowedTCPPorts = [53];
-    allowedUDPPorts = [53];
+    allowedTCPPorts = [ 53 ];
+    allowedUDPPorts = [ 53 ];
   };
 }

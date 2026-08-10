@@ -1,10 +1,10 @@
 { config, ... }:
 
 {
-  
+
   # locales
   # Everything else is in italian i know but i just cant use italian in such a technical environment, imagine any error log :empty:
-  i18n.defaultLocale = "en_US.UTF-8"; 
+  i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "it_IT.UTF-8";

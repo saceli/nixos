@@ -14,7 +14,13 @@
     #       it with `buildnix laptop-iso` if you already rebuilt this flake atleast once) then run `sudo mkpasswd | tee /path/to/hashfile`.
     #       The shittiest part is the hash comes different every single time because of salting, so you can't really manually verify it easily
 
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" "kvm" "dialout" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "libvirtd"
+      "kvm"
+      "dialout"
+    ];
 
   };
 

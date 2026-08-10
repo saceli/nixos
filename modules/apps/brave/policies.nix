@@ -59,27 +59,27 @@
 
     # search engine
     DefaultSearchProviderEnabled = true;
-/*
-    DefaultSearchProviderImageURL = lib.concatStrings (
-      lib.choose config.vars.selfhosted.searxng.enable
-        "https://${config.vars.selfhosted.searxng.domain}/searxng/static/themes/simple/img/favicon.svg"
-        "https://duckduckgo.com/assets/logo_header_mobile.alt.v109.svg"
-    );
+    /*
+        DefaultSearchProviderImageURL = lib.concatStrings (
+          lib.choose config.vars.selfhosted.searxng.enable
+            "https://${config.vars.selfhosted.searxng.domain}/searxng/static/themes/simple/img/favicon.svg"
+            "https://duckduckgo.com/assets/logo_header_mobile.alt.v109.svg"
+        );
 
-    DefaultSearchProviderKeyword = lib.concatStrings (
-      lib.choose config.vars.selfhosted.searxng.enable ":sx" ":ddg"
-    );
+        DefaultSearchProviderKeyword = lib.concatStrings (
+          lib.choose config.vars.selfhosted.searxng.enable ":sx" ":ddg"
+        );
 
-    DefaultSearchProviderName = lib.concatStrings (
-      lib.choose config.vars.selfhosted.searxng.enable "SearXNG" "DuckDuckGo"
-    );
+        DefaultSearchProviderName = lib.concatStrings (
+          lib.choose config.vars.selfhosted.searxng.enable "SearXNG" "DuckDuckGo"
+        );
 
-    DefaultSearchProviderSearchURL = lib.concatStrings (
-      lib.choose config.vars.selfhosted.searxng.enable
-        "https://${config.vars.selfhosted.searxng.domain}/searxng/search?q={searchTerms}"
-        "https://duckduckgo.com/?q={searchTerms}"
-    );
-*/
+        DefaultSearchProviderSearchURL = lib.concatStrings (
+          lib.choose config.vars.selfhosted.searxng.enable
+            "https://${config.vars.selfhosted.searxng.domain}/searxng/search?q={searchTerms}"
+            "https://duckduckgo.com/?q={searchTerms}"
+        );
+    */
     # disable the password manager
     PasswordManagerEnabled = false;
 
@@ -130,7 +130,7 @@
     # mitigate spectre-like sidechannel attacks
     SitePerProcess = true;
 
-    # enable chrome dino 
+    # enable chrome dino
     AllowDinosaurEasterEgg = true;
 
     # do not use the builtin pdf reader

@@ -2,14 +2,25 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 # yada yada yada. fuck you! edit this all u want
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
 
-
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" "rtsx_usb_sdmmc" ];
+  boot.initrd.availableKernelModules = [
+    "xhci_pci"
+    "ahci"
+    "usbhid"
+    "usb_storage"
+    "sd_mod"
+    "rtsx_usb_sdmmc"
+  ];
   boot.kernelModules = [ "kvm-amd" ];
-  #boot.kernelParams = [   
+  #boot.kernelParams = [
   #  "systemd.gpt_auto=no"
   #];
 

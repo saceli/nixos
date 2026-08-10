@@ -2,6 +2,7 @@
 
 let
   index = 1; # Change for every vm
+  macAddress = "00:00:00:00:00:01"; # Change for every vm
 in
 {
   microvm.vms.searxng = {
@@ -14,12 +15,14 @@ in
         mem = 512;
         storeOnDisk = false;
 
-        interfaces = [{
-          type = "tap";
-          id = "vm${toString index}";
-          mac = "00:00:00:00:00:01";
-	  tap.vhost = true;
-        }];
+        interfaces = [
+          {
+            type = "tap";
+            id = "vm${toString index}";
+            mac = macAddress;
+            tap.vhost = true;
+          }
+        ];
 
         shares = [
           {
@@ -36,7 +39,11 @@ in
       fileSystems."/" = {
         device = "tmpfs";
         fsType = "tmpfs";
-        options = [ "defaults" "mode=755" "size=50%" ];
+        options = [
+          "defaults"
+          "mode=755"
+          "size=50%"
+        ];
       };
 
       systemd.tmpfiles.rules = [
@@ -56,7 +63,6 @@ in
         servers = [ "time.cloudflare.com" ];
       };
 
-
       microvm.vsock.cid = 100;
 
       services.openssh = {
@@ -65,7 +71,6 @@ in
         settings.PasswordAuthentication = false;
         startWhenNeeded = true;
       };
-
 
       # nixos enables grub by default, we dont need it
       boot.loader.grub.enable = false;
@@ -123,8 +128,9 @@ in
       # no need to enable switch-to-configuration.pl
       system.switch.enable = lib.mkDefault false;
 
-      users.users.root.openssh.authorizedKeys.keys = 
-        lib.splitString "\n" (builtins.readFile ../../../srv/microvm-authorized_keys);
+      users.users.root.openssh.authorizedKeys.keys = lib.splitString "\n" (
+        builtins.readFile ../../../srv/microvm-authorized_keys
+      );
     };
   };
 }

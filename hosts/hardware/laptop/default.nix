@@ -1,5 +1,5 @@
 {
-  imports = [ 
+  imports = [
     ./hardware.nix
     ./static-ip.nix
   ];
