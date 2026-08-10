@@ -25,7 +25,7 @@
     };
 
     authorizedKeysFile = lib.mkOption {
-      type = lib.types.addCheck lib.types.path (p: builtins.pathExists p);
+      type = lib.types.path;
       default = config.cfg.flake.absolutePath + /srv/microvm-authorized_keys;
       description = "SSH authorized keys file for MicroVMs";
     };
