@@ -74,5 +74,6 @@
       upower = { imports = [ ./services/upower ]; };
 
     };
+    sops = { imports = [ ./sops ]; };
 
 }
