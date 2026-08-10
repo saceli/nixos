@@ -76,7 +76,7 @@ in
     ports = [ "0.0.0.0:8080:8080" ];
     volumes = [
       "${settingsFile}:/etc/searxng/settings.yml:ro"
-      "/var/lib/microvm/searxng/secrets/secret_key:/etc/searxng/secret_key:ro"
+      "/var/lib/searxng-secrets/secret_key:/etc/searxng/secret_key:ro"
     ];
     environment = {
       INSTANCE_NAME = "SearXNG";

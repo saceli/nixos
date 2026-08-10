@@ -20,7 +20,7 @@ in
       microvm.shares = [
         {
           tag = "searxng-secrets";
-          source = "/var/lib/microvm/searxng/secrets";
+          source = "/var/lib/searxng-secrets";
           mountPoint = "/var/lib/searxng-secrets";
           proto = "virtiofs";
         }
