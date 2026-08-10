@@ -1,8 +1,7 @@
 { lib, ... }:
 
 let
-  maxVMs = 64;
-
+  maxVMs = 8; # i surely won't make any more than 8 vms, so i save up build time by making the maxVMs to 8
 in
 {
 

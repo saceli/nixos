@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}:
+{ config, pkgs, lib, ... }:
 
 let
   settings = {
@@ -22,9 +17,7 @@ let
       infinite_scroll = true;
       center_alignment = true;
       default_theme = "simple";
-      theme_args = {
-        simple_style = "dark";
-      };
+      theme_args = { simple_style = "dark"; };
       results_on_new_tab = false;
       search_on_category_select = false;
       url_formatting = "full";
@@ -58,7 +51,7 @@ let
       "Unit converter plugin"
       "Tracker URL remover"
     ];
-    engines = config.searxng.engines or [ ];
+    engines = config.searxng.engines or [];
   };
 
   settingsFile = pkgs.writeText "searxng-settings.yml" (builtins.toJSON settings);
