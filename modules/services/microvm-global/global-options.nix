@@ -1,4 +1,33 @@
-{ config, lib, ... }:
+# usage:
+
+/*
+{ ... }:
+
+let
+  index = 1; # change per vm
+  mac = "00:00:00:00:00:01"; # change per vm
+in
+{
+  microvm.vms.NAMEOFVM = {
+    config = {
+      
+      _module.args = {
+        inherit index mac;
+      };
+
+      imports = [
+        config.microvm.globalOptions
+      ];
+
+      # other options here
+
+    };
+  };
+}
+
+*/
+
+{ config, lib, index, mac, ... }:
 
 {
   options.microvm.globalOptions = lib.mkOption {

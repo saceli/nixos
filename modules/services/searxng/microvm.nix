@@ -1,22 +1,23 @@
-{ lib, ... }:
+{ ... }:
 
 let
-  index = 1; # Change for every vm
-  mac = "00:00:00:00:00:01"; # Change for every vm
+  index = 1;
+  mac = "00:00:00:00:00:01";
 in
 {
   microvm.vms.searxng = {
     config = {
 
+      _module.args = {
+        inherit index mac;
+      };
+
       imports = [
         ./oci-containers.nix
-        config.microvm.globalOptions 
+        config.microvm.globalOptions
       ];
 
-      microvm = {
-
-        networking.firewall.allowedTCPPorts = [ 8080 ];
-
+      microvm.networking.firewall.allowedTCPPorts = [ 8080 ];
     };
   };
 }
