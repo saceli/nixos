@@ -51,7 +51,7 @@
       dms-plugin-registry,
       microvm,
       wallpapers,
-      sops-nix
+      sops-nix,
       ...
     }:
     let
