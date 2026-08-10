@@ -34,6 +34,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs =
@@ -46,6 +51,7 @@
       dms-plugin-registry,
       microvm,
       wallpapers,
+      sops-nix
       ...
     }:
     let
@@ -118,11 +124,15 @@
             hjem
             wallpapers
             dms-plugin-registry
+            sops-nix
             ;
         };
 
         modules = [
           modules.cfg
+
+          sops-nix.nixosModules.default
+          modules.sops
 
           # Boot
           lanzaboote.nixosModules.lanzaboote
@@ -192,6 +202,7 @@
             hjem
             wallpapers
             dms-plugin-registry
+            sops-nix
             ;
         };
 
@@ -199,6 +210,9 @@
           "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
 
           modules.cfg
+
+          sops-nix.nixosModules.default
+          modules.sops
 
           # Boot
           modules.boot.emulated
@@ -264,12 +278,16 @@
             hjem
             microvm
             dms-plugin-registry
+            sops-nix
             ;
         };
 
         modules = [
 
           modules.cfg
+
+          sops-nix.nixosModules.default
+          modules.sops
 
           # Apps
           modules.apps.git

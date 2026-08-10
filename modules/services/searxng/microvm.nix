@@ -17,6 +17,15 @@ in
 
       microvm.mem = lib.mkForce 1024;
 
+      microvm.shares = [
+        {
+          tag = "searxng-secrets";
+          source = "/var/lib/microvm/searxng/secrets";
+          mountPoint = "/var/lib/searxng-secrets";
+          proto = "virtiofs";
+        }
+      ];
+
     };
   };
 }
