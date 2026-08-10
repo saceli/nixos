@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 
 let
   index = 1;
@@ -14,6 +14,8 @@ in
       ];
 
       networking.firewall.allowedTCPPorts = [ 8080 ];
+
+      microvm.mem = lib.mkForce 1024
 
     };
   };
