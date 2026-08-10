@@ -2,6 +2,6 @@
   imports = [
     ./global-options.nix
     ./networking.nix
-    ./authorized_keys
+    ./authorized_keys.nix
   ];
 }
