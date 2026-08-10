@@ -15,7 +15,7 @@ in
 
       networking.firewall.allowedTCPPorts = [ 8080 ];
 
-      microvm.mem = lib.mkForce 1024
+      microvm.mem = lib.mkForce 1024;
 
     };
   };
