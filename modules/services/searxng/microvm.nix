@@ -8,13 +8,9 @@ in
   microvm.vms.searxng = {
     config = {
 
-      _module.args = {
-        inherit index mac;
-      };
-
       imports = [
         ./oci-containers.nix
-        config.microvm.globalOptions
+        (config.microvm.globalOptions { inherit index mac; })
       ];
 
       networking.firewall.allowedTCPPorts = [ 8080 ];

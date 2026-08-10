@@ -36,12 +36,12 @@
 
 {
   options.microvm.globalOptions = lib.mkOption {
-    type = lib.types.deferredModule;
+    type = lib.types.functionTo lib.types.deferredModule;
     default = { };
     description = "Global configuration applied to MicroVMs.";
   };
 
-  config.microvm.globalOptions = {
+  config.microvm.globalOptions = { index, mac }: {
     microvm = {
       hypervisor = "qemu";
       vcpu = 1;
