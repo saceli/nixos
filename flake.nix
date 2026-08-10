@@ -303,7 +303,7 @@
 
           # Services
           microvm.nixosModules.host
-          modules.services.microvm-network
+          modules.services.microvm-global
 
           modules.services.auditd
           modules.services.journald
