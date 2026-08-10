@@ -24,11 +24,12 @@
       description = "NixOS state version for MicroVMs";
     };
 
-    authorizedKeysFile = lib.mkOption {
-      type = lib.types.path;
-      default = config.cfg.flake.absolutePath + /.ssh/authorized_keys;
-      description = "SSH authorized keys file for MicroVMs";
+    options.cfg.homelab.microvm.authorizedKeys = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN1UsmZD8Y1N4ydHo3ob2PgTgNPe7VxwlVaD8XtmVgwP elia@nixodactyl" ];
+      description = "SSH authorized keys for MicroVM root";
     };
+
   };
 
 
