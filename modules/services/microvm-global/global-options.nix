@@ -41,7 +41,7 @@
     description = "Global configuration applied to MicroVMs.";
   };
 
-  config.microvm.globalOptions = { index, mac }: {
+  config.microvm.globalOptions = { index, mac, authorizedKeys ? [] }: {
     microvm = {
       hypervisor = "qemu";
       vcpu = 1;
