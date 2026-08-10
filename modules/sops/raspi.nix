@@ -7,7 +7,7 @@
   };
 
   systemd.tmpfiles.rules = [
-    "d /var/lib/microvm/searxng 0755 root root -"
-    "L+ /var/lib/microvm/searxng/secret_key - - - - ${config.sops.secrets.searxng_secret_key.path}"
+    "d /var/lib/microvm/searxng/secrets 0400 root root -"
+    "L+ /var/lib/microvm/searxng/secrets/secret_key - - - - ${config.sops.secrets.searxng_secret_key.path}"
   ];
 }
