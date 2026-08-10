@@ -1,4 +1,4 @@
-{ sops-nix, ... }:
+{ sops-nix, config, ... }:
 
 {
   sops.secrets.searxng_secret_key = {
