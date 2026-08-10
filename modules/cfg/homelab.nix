@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ config, lib, ... }:
 
 {
   options.cfg.homelab = {
@@ -26,7 +26,7 @@
 
     authorizedKeysFile = lib.mkOption {
       type = lib.types.path;
-      default = "~/nixos/srv/microvm-authorized_keys";
+      default = "${config.cfg.flake.absolutePath}/srv/microvm-authorized_keys";
       description = "SSH authorized keys file for MicroVMs";
     };
   };
