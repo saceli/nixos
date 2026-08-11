@@ -80,16 +80,8 @@ in
     ];
     environment = {
       INSTANCE_NAME = "SearXNG";
+      SEARXNG_SECRET_KEY_FILE = "/etc/searxng/secret_key";
     };
-
-    entrypoint = "sh";
-    cmd = [
-      "-c"
-      ''
-        export SEARXNG_SECRET_KEY=$(cat /etc/searxng/secret_key)
-        exec /usr/local/searxng/dockerfiles/docker-entrypoint.sh
-      ''
-    ];
 
     extraOptions = [
       "--read-only"
@@ -108,11 +100,14 @@ in
     after = [
       "network-online.target"
       "sops-nix.service"
+      "systemd-tmpfiles-setup.service"
     ];
     wants = [
       "network-online.target"
       "sops-nix.service"
+      "systemd-tmpfiles-setup.service"
     ];
+    requires = [ "systemd-tmpfiles-setup.service" ];
   };
 
 }
