@@ -8,6 +8,7 @@
       fileroller = { imports = [ ./apps/fileroller ]; };
       gedit = { imports = [ ./apps/gedit ]; };
       git = { imports = [ ./apps/git ]; };
+      gnome-keyring = { imports = [ ./apps/gnome-keyring ]; };
       nautilus = { imports = [ ./apps/nautilus ]; };
       podman = { imports = [ ./apps/podman ]; };
       ssh = { imports = [ ./apps/ssh ]; };
