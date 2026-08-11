@@ -29,16 +29,17 @@ let
       search_on_category_select = false;
       url_formatting = "full";
       categories_as_tabs = [ "general" ];
-      favicon_resolver = "https://icons.duckduckgo.com/ip3/{domain}.ico";
     };
     search = {
       safe_search = 0;
+      favicon_resolver = "https://icons.duckduckgo.com/ip3/{domain}.ico";
       autocomplete_min = 2;
       autocomplete = "duckduckgo";
     };
     server = {
       base_url = "https://search.home";
       public_instance = false;
+      secret_key: "/etc/searxng/secret_key";
       limiter = false;
       image_proxy = true;
       method = "GET";
@@ -80,7 +81,6 @@ in
     ];
     environment = {
       INSTANCE_NAME = "SearXNG";
-      SEARXNG_SECRET_KEY_FILE = "/etc/searxng/secret_key";
     };
 
     extraOptions = [
