@@ -10,7 +10,7 @@ let
     use_default_settings = true;
     general = {
       debug = false;
-      instance_name = "searxng";
+      instance_name = "SearXNG";
       donation_url = false;
       contact_url = false;
       privacypolicy_url = false;
@@ -32,14 +32,14 @@ let
     };
     search = {
       safe_search = 0;
-      favicon_resolver = "https://icons.duckduckgo.com/ip3/{domain}.ico";
+      favicon_resolver = "duckduckgo";
       autocomplete_min = 2;
       autocomplete = "duckduckgo";
     };
     server = {
       base_url = "https://search.home";
       public_instance = false;
-      secret_key: "/etc/searxng/secret_key";
+      secret_key = "/etc/searxng/secret_key";
       limiter = false;
       image_proxy = true;
       method = "GET";

@@ -189,5 +189,14 @@
     # use the wireguard-backed unbound instead
     DnsOverHttpsMode = "off";
 
+    # search engine
+    DefaultSearchProviderEnabled = true;
+    DefaultSearchProviderName = "SearXNG";
+    DefaultSearchProviderKeyword = ":sx";
+    DefaultSearchProviderSearchURL = "https://192.168.178.33/search?q={searchTerms}";
+
+    # new tab page
+    NewTabPageLocation = "https://192.168.178.33";
+
   };
 }
