@@ -159,6 +159,7 @@
           modules.apps.gedit
           modules.apps.nautilus
           modules.apps.ssh
+	  modules.apps.gnome-keyring
           modules.apps.vlc
 
           # Desktop
@@ -237,6 +238,7 @@
           modules.apps.nautilus
           modules.apps.ssh
           modules.apps.vlc
+	  modules.apps.gnome-keyring
 
           # Desktop
           modules.desktop.dms-niri
@@ -294,6 +296,7 @@
           modules.apps.bash
           modules.apps.ssh
           modules.apps.podman
+	  modules.apps.gnome-keyring
 
           # Boot
           modules.boot.kernel

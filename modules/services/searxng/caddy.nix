@@ -22,6 +22,7 @@ in
       "search.lan"
       "www.search.lan"
       "www.search.home"
+      homelab-ip
     ];
 
     # since searxng is just http, we don't route the port via nat.forwardPorts, since thats for raw layer 3/4
