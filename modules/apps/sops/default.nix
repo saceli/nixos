@@ -1,6 +1,6 @@
 {
   imports = [
+    ./enable.nix
     ./settings.nix
-    ./raspi.nix
   ];
 }

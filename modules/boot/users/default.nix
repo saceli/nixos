@@ -8,5 +8,6 @@
     ./lock-root.nix
     ./main.nix
     ./xdg.nix
+    ./sops.nix
   ];
 }
