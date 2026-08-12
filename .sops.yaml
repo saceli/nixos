@@ -5,4 +5,7 @@ creation_rules:
     age: age13st2ctgtlkrk6084hvk4dfjl5cgy4zzhha6zvk6w7009gqwp75qqyf8nen
   - path_regex: secrets/laptop-amd64/.*\.enc$
     age: age13st2ctgtlkrk6084hvk4dfjl5cgy4zzhha6zvk6w7009gqwp75qqyf8nen
+<<<<<<< HEAD
 
+=======
+>>>>>>> 580da48 (a)
