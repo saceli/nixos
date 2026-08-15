@@ -30,6 +30,7 @@
       users = { imports = [ ./boot/users ]; };
 
     };
+    cfg = { imports = [ ./cfg ]; };
 
     core = {
       nix = { imports = [ ./core/nix ]; };
