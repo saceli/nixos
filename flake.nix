@@ -129,10 +129,7 @@
         };
 
         modules = [
-          modules.cfg
-
           sops-nix.nixosModules.default
-          modules.sops
 
           # Boot
           lanzaboote.nixosModules.lanzaboote
@@ -211,10 +208,7 @@
         modules = [
           "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
 
-          modules.cfg
-
           sops-nix.nixosModules.default
-          modules.sops
 
           # Boot
           modules.boot.emulated
@@ -288,10 +282,7 @@
 
         modules = [
 
-          modules.cfg
-
           sops-nix.nixosModules.default
-          modules.sops
 
           # Apps
           modules.apps.git
