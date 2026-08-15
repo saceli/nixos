@@ -9,8 +9,10 @@
       gedit = { imports = [ ./apps/gedit ]; };
       git = { imports = [ ./apps/git ]; };
       gnome-keyring = { imports = [ ./apps/gnome-keyring ]; };
+      libreoffice = { imports = [ ./apps/libreoffice ]; };
       nautilus = { imports = [ ./apps/nautilus ]; };
       podman = { imports = [ ./apps/podman ]; };
+      sops = { imports = [ ./apps/sops ]; };
       ssh = { imports = [ ./apps/ssh ]; };
       vlc = { imports = [ ./apps/vlc ]; };
       zathura = { imports = [ ./apps/zathura ]; };
@@ -28,7 +30,6 @@
       users = { imports = [ ./boot/users ]; };
 
     };
-    cfg = { imports = [ ./cfg ]; };
 
     core = {
       nix = { imports = [ ./core/nix ]; };
@@ -75,6 +76,5 @@
       upower = { imports = [ ./services/upower ]; };
 
     };
-    sops = { imports = [ ./sops ]; };
 
 }
