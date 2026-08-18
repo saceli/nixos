@@ -6,8 +6,8 @@
 }:
 
 let
-  username = "elia";
-  avatarPath = ../../../assets/pfp/elia.png;
+  username = config.cfg.user.username;
+  avatarPath = ../../../assets/pfp/${config.cfg.user.username}.png;
 in
 {
   systemd.tmpfiles.rules = [

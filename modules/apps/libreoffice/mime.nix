@@ -1,8 +1,7 @@
 { pkgs, ... }:
 
 {
-  xdg.mimeApps = {
-    enable = true;
+  xdg.mime.defaultApplications = {
       # Writer
       "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = "libreoffice-writer.desktop";
       "application/vnd.oasis.opendocument.text" = "libreoffice-writer.desktop";
@@ -17,8 +16,6 @@
       "application/vnd.openxmlformats-officedocument.presentationml.presentation" = "libreoffice-impress.desktop";
       "application/vnd.oasis.opendocument.presentation" = "libreoffice-impress.desktop";
       "application/vnd.ms-powerpoint" = "libreoffice-impress.desktop";
-
-    };
 
   };
 }

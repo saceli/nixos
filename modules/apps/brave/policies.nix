@@ -190,7 +190,6 @@
     DnsOverHttpsMode = "off";
 
     # search engine
-    DefaultSearchProviderEnabled = true;
     DefaultSearchProviderName = "SearXNG";
     DefaultSearchProviderKeyword = ":sx";
     DefaultSearchProviderSearchURL = "https://192.168.178.33/search?q={searchTerms}";

@@ -1,13 +1,11 @@
-{ sops-nix, config, ... }:
+{ config, lib, ... }:
 
 {
-  sops.secrets.elia-password-hash = {
-    sopsFile = ../../secrets.yaml;
-    key = "elia/passwordHash";
+  config = lib.mkIf (config.cfg.user.sops.hashedPasswordKey != null) {
+    sops.secrets.userPasswordHash = {
+      sopsFile = ../../../secrets/secrets.yaml;
+      key = config.cfg.user.sops.hashedPasswordKey;
+      neededForUsers = true;
+    };
   };
-
-  systemd.tmpfiles.rules = [
-    "d /run/ 0400 root root -"
-    "C /var/lib/searxng-secrets/secret_key - - - - ${config.sops.secrets.searxng_secret_key.path}"
-  ];
 }

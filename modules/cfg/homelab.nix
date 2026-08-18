@@ -6,8 +6,35 @@
     upInterface = lib.mkOption {
       type = lib.types.str;
       default = "end0";
-      description = "Uplink interface for NAT and external connectivity";
+      description = "always up interface for homelab (the interface that's always online, usually a ethernet interface like end0 or eth0)";
     };
+
+    privateIp = lib.mkOption {
+      type = lib.types.str;
+      default = "192.168.178.33";
+      description = "homelab static private ip";
+    };
+
+  };
+
+  options.cfg.homelab.services.searxng = {
+    
+    baseUrl = lib.mkOption {
+      type = lib.types.str;
+      default = "search.home";
+      description = "homelab searxng base url";
+    };
+
+    urlAliases = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = [ 
+        "search.lan"
+        "www.search.lan"
+        "www.search.home" 
+      ];
+      description = "SSH authorized keys for MicroVM root";
+    };
+
 
   };
 
@@ -24,7 +51,7 @@
       description = "NixOS state version for MicroVMs";
     };
 
-    authorizedKeys = lib.mkOption {
+    globalAuthorizedKeys = lib.mkOption {
       type = lib.types.listOf lib.types.str;
       default = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN1UsmZD8Y1N4ydHo3ob2PgTgNPe7VxwlVaD8XtmVgwP elia@nixodactyl" ];
       description = "SSH authorized keys for MicroVM root";

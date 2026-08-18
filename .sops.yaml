@@ -1,5 +1,5 @@
 creation_rules:
-  - path_regex: secrets/raspi/.*\.yaml$
-    age: age1fw3uyseudkjxakh67v03f8qn2jqsa05rzds8h9yvckvph2e78e5q0fqpka
-  - path_regex: secrets/laptop-amd64/.*\.yaml$
-    age: age13st2ctgtlkrk6084hvk4dfjl5cgy4zzhha6zvk6w7009gqwp75qqyf8nen
+  - path_regex: secrets/.*\.yaml$
+    age: >-
+      age1ad5dr2mkccymy6m7v25m5ykd6s50ssv4jmgy48ee2nhtlggmkszs4t5uf6,
+      age1fw3uyseudkjxakh67v03f8qn2jqsa05rzds8h9yvckvph2e78e5q0fqpka

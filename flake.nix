@@ -64,6 +64,13 @@
 
       modules = import ./modules;
       hosts = import ./hosts;
+      cfg = {
+        imports = [
+          ./cfg.nix
+          ./modules/cfg
+        ];
+      };
+      
     in
     {
       devShells.${system}.default = pkgs.mkShell {
@@ -129,6 +136,9 @@
         };
 
         modules = [
+          cfg
+
+          modules.apps.sops
           sops-nix.nixosModules.default
 
           # Boot
@@ -209,6 +219,7 @@
           "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
 
           sops-nix.nixosModules.default
+          modules.apps.sops
 
           # Boot
           modules.boot.emulated
@@ -283,6 +294,7 @@
         modules = [
 
           sops-nix.nixosModules.default
+          modules.apps.sops
 
           # Apps
           modules.apps.git

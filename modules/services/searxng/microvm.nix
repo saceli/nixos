@@ -10,7 +10,7 @@ in
 
       imports = [
         ./oci-containers.nix
-        (config.microvm.globalOptions { inherit index mac; authorizedKeys = config.cfg.homelab.microvm.authorizedKeys; })
+        (config.microvm.globalOptions { inherit index mac; authorizedKeys = config.cfg.homelab.microvm.globalAuthorizedKeys; })
       ];
 
       networking.firewall.allowedTCPPorts = [ 8080 ];

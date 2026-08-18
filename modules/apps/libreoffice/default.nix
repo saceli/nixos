@@ -1,7 +1,6 @@
 {
   imports = [
     ./enable.nix
-    ./history.nix
-    ./options.nix
+    ./mime.nix
   ];
 }

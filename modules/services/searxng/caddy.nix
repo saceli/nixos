@@ -4,7 +4,6 @@
   ...
 }:
 let
-  homelab-ip = lib.strings.trim (builtins.readFile ../../../srv/homelab-ip.txt);
   securityHeaders = ''
     header {
       Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
@@ -15,14 +14,14 @@ let
   '';
 in
 {
-  services.caddy.virtualHosts."search.home" = {
+  services.caddy.virtualHosts."${config.cfg.homelab.services.searxng.baseUrl}" = {
     listenAddresses = [ "0.0.0.0" ];
 
     serverAliases = [
       "search.lan"
       "www.search.lan"
       "www.search.home"
-      homelab-ip
+      config.cfg.homelab.privateIp
     ];
 
     # since searxng is just http, we don't route the port via nat.forwardPorts, since thats for raw layer 3/4
