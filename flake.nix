@@ -218,6 +218,8 @@
         modules = [
           "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
 
+	  cfg
+
           sops-nix.nixosModules.default
           modules.apps.sops
 
@@ -293,6 +295,8 @@
 
         modules = [
 
+	  cfg
+
           sops-nix.nixosModules.default
           modules.apps.sops
 
@@ -341,6 +345,7 @@
           modules.services.caddy
           modules.services.unbound
           modules.services.searxng
+	  modules.services.tailscale
 
           # Host-specific
           hosts.software.raspi

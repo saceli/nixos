@@ -72,6 +72,7 @@
       run0 = { imports = [ ./services/run0 ]; };
       searxng = { imports = [ ./services/searxng ]; };
       sshd = { imports = [ ./services/sshd ]; };
+      tailscale = { imports = [ ./services/tailscale ]; };
       timesyncd = { imports = [ ./services/timesyncd ]; };
       unbound = { imports = [ ./services/unbound ]; };
       upower = { imports = [ ./services/upower ]; };

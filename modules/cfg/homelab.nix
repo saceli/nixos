@@ -5,7 +5,7 @@
 
     upInterface = lib.mkOption {
       type = lib.types.str;
-      default = "end0";
+      default = "wlan0";
       description = "always up interface for homelab (the interface that's always online, usually a ethernet interface like end0 or eth0)";
     };
 

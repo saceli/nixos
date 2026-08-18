@@ -3,7 +3,7 @@
 {
   sops.secrets.searxng_secret_key = {
     sopsFile = ../../../secrets/secrets.yaml;
-    key = "raspi/searxng/secret_key";
+    key = "raspi/searxng/secretKey";
   };
 
   systemd.tmpfiles.rules = [
