@@ -1,35 +1,30 @@
 { pkgs, config, ... }:
 
+let
+  globalPiSettings = ''
+    HostName 192.168.178.33
+    User elia
+    Port 22
+    SetEnv TERM=xterm-256color
+    IdentityFile ~/.ssh/raspi
+  '';
+in 
+
+
 {
   programs.ssh = {
     extraConfig = ''
       Host pi
-        HostName 192.168.178.33
-        User elia
-        Port 22
-        SetEnv TERM=xterm-256color
-        IdentityFile ~/.ssh/raspi
+        ${globalPiSettings}
 
       Host homelab
-        HostName 192.168.178.33
-        User elia
-        Port 22
-        SetEnv TERM=xterm-256color
-        IdentityFile ~/.ssh/raspi
+        ${globalPiSettings}
 
       Host raspi
-        HostName 192.168.178.33
-        User elia
-        Port 22
-        SetEnv TERM=xterm-256color
-        IdentityFile ~/.ssh/raspi
+        ${globalPiSettings}
 
       Host nixodactyl
-        HostName 192.168.178.33
-        User elia
-        Port 22
-        SetEnv TERM=xterm-256color
-        IdentityFile ~/.ssh/raspi
+        ${globalPiSettings}
 
       Host github
         HostName github.com
