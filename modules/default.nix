@@ -15,6 +15,7 @@
       sops = { imports = [ ./apps/sops ]; };
       ssh = { imports = [ ./apps/ssh ]; };
       vlc = { imports = [ ./apps/vlc ]; };
+      weechat = { imports = [ ./apps/weechat ]; };
       zathura = { imports = [ ./apps/zathura ]; };
 
     };
@@ -48,7 +49,7 @@
 
     home = {
       laptop = { imports = [ ./home/laptop ]; };
-      laptop-iso = { imports = [ ./home/laptop-iso ]; };
+      live-cd = { imports = [ ./home/live-cd ]; };
       raspi = { imports = [ ./home/raspi ]; };
       universal-configs = { imports = [ ./home/universal-configs ]; };
 

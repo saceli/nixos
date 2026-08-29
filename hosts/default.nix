@@ -1,29 +1,18 @@
 {
 
-  hardware = {
-    laptop = {
-      imports = [ ./hardware/laptop ];
-    };
-    laptop-iso = {
-      imports = [ ./hardware/laptop-iso ];
-    };
-    raspi = {
-      imports = [ ./hardware/raspi ];
+
+    hardware = {
+      laptop = { imports = [ ./hardware/laptop ]; };
+      live-cd = { imports = [ ./hardware/live-cd ]; };
+      raspi = { imports = [ ./hardware/raspi ]; };
+
     };
 
-  };
+    software = {
+      laptop = { imports = [ ./software/laptop ]; };
+      live-cd = { imports = [ ./software/live-cd ]; };
+      raspi = { imports = [ ./software/raspi ]; };
 
-  software = {
-    laptop = {
-      imports = [ ./software/laptop ];
     };
-    laptop-iso = {
-      imports = [ ./software/laptop-iso ];
-    };
-    raspi = {
-      imports = [ ./software/raspi ];
-    };
-
-  };
 
 }

@@ -1,4 +1,4 @@
-{ pkgs, iloader, ... }:
+{ pkgs, ... }:
 
 {
   environment.systemPackages = with pkgs; [

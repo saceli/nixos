@@ -1,4 +1,4 @@
-{ pkgs, iloader, ... }:
+{ pkgs, iloader, anycubic-slicer-next, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -20,6 +20,9 @@
     inkscape
     imagemagick
     figlet
+    orca-slicer
+    anycubic-slicer-next.packages.x86_64-linux.default
+    freecad
 
     # AUDIO & MUSIC
     spotify
@@ -162,7 +165,7 @@
     starship
 
     # iOS Sideloading
-    iloader.packages.${system}.default
+    # iloader.packages.${system}.default # broken as of 19th aug 2026 19:39 utc
     usbmuxd
 
     # NixOS Ecosystem

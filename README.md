@@ -77,7 +77,7 @@ Raspberry Pi server - all built from one modular, reusable configuration tree.
 | Configuration  | System          | Purpose                                                              | Build target                                                                                 |
 | ----------------| -----------------| ----------------------------------------------------------------------| ----------------------------------------------------------------------------------------------|
 | `laptop-amd64` | `x86_64-linux`  | Main daily-driver laptop (LUKS-encrypted, secure boot, full desktop) | `nixos-rebuild`                                                                              |
-| `laptop-iso`   | `x86_64-linux`  | Bootable live USB with the full desktop, for installs & recovery     | `.#laptop-iso` package                                                                       |
+| `live-cd`   | `x86_64-linux`  | Bootable live USB with the full desktop, for installs & recovery     | `.#live-cd` package                                                                       |
 | `raspi`        | `aarch64-linux` | Headless Raspberry Pi server (SSH-only, hardened sshd)               | `.#packages.aarch64-linux.raspi` package (or `.#raspi` if you're already in a aarch machine) |
 
 All hosts share the same module library (`modules/`) and only differ in which
@@ -169,7 +169,7 @@ Once built, `sudo` is aliased to `run0` on the system, so `run0 nixos-rebuild ..
 ### Optional: Build the live ISO
 
 ```bash
-nix build .#packages.x86_64-linux.laptop-iso
+nix build .#packages.x86_64-linux.live-cd
 ls result/iso/          # the .iso image
 sudo dd if=result/iso/nixos-*.iso of=/dev/sdX bs=4M status=progress oflag=sync
 ```
@@ -337,7 +337,7 @@ modules/
 ├── core/        nix (settings, nix-ld, /etc/current-flake) · packages · state
 ├── desktop/     dms-niri (niri + DankMaterialShell + greeter) · niri
 ├── hardware/    redistributable firmware defaults
-├── home/        hjem file trees per host (laptop · laptop-iso · raspi)
+├── home/        hjem file trees per host (laptop · live-cd · raspi)
 │                + universal-configs (fastfetch, starship, bashrc…)
 ├── network/     firewall · host (dns, issue, machine-id, wireless)
 │                macchanger · networkmanager
@@ -349,7 +349,7 @@ Host-specific bits live in `hosts/`:
 
 ```
 hosts/
-├── hardware/    laptop (LUKS/XFS/AMD) · laptop-iso · raspi (sd-image)
+├── hardware/    laptop (LUKS/XFS/AMD) · live-cd · raspi (sd-image)
 └── software/    per-host package sets & programs (+ ISO live-user config)
 ```
 
