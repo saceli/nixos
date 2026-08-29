@@ -15,7 +15,7 @@
     };
 
     iloader = {
-      url = "github:nab138/iloader";
+      url = "github:nab138/iloader?tag=v2.3.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -39,11 +39,23 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+<<<<<<< HEAD
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+=======
+    neovim = {
+      url = "path:/home/elia/saceli/neovim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    anycubic-slicer-next = {
+      url = "github:roccorakete/anycubic-slicer-next-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+>>>>>>> 6c3f6b0d103a7c2878ae53582f3e0beaf144b948
 
   };
 
@@ -58,7 +70,12 @@
       microvm,
       wallpapers,
       sops-nix,
+<<<<<<< HEAD
       nixos-hardware,
+=======
+      neovim,
+      anycubic-slicer-next,
+>>>>>>> 6c3f6b0d103a7c2878ae53582f3e0beaf144b948
       ...
     }:
     let
@@ -107,9 +124,13 @@
         ];
 
         shellHook = ''
-          echo "╭─────────────────────────────────────────────╮"
-          echo "│       Saceli Development Environment        │"
-          echo "╰─────────────────────────────────────────────╯"
+          echo " ######     ###     ######  ######## ##       #### "
+          echo "##    ##   ## ##   ##    ## ##       ##        ##  "
+          echo "##        ##   ##  ##       ##       ##        ##  "
+          echo " ######  ##     ## ##       ######   ##        ##  "
+          echo "      ## ######### ##       ##       ##        ##  "
+          echo "##    ## ##     ## ##    ## ##       ##        ##  "
+          echo " ######  ##     ##  ######  ######## ######## #### "
           echo
           echo "  System   : ${system}"
           echo "  Nix      : $(nix --version)"
@@ -139,6 +160,8 @@
             wallpapers
             dms-plugin-registry
             sops-nix
+            neovim
+            anycubic-slicer-next
             ;
         };
 
@@ -176,6 +199,8 @@
 	        modules.apps.gnome-keyring
           modules.apps.vlc
           modules.apps.libreoffice
+          modules.apps.weechat
+          neovim.nixosModules.default
 
           # Desktop
           modules.desktop.dms-niri
@@ -208,7 +233,7 @@
         ];
       };
 
-      nixosConfigurations.laptop-iso = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.live-cd = nixpkgs.lib.nixosSystem {
         inherit system;
 
         specialArgs = {
@@ -219,13 +244,14 @@
             wallpapers
             dms-plugin-registry
             sops-nix
+            neovim
             ;
         };
 
         modules = [
           "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
 
-	  cfg
+	        cfg
 
           sops-nix.nixosModules.default
           modules.apps.sops
@@ -255,6 +281,8 @@
           modules.apps.vlc
 	        modules.apps.gnome-keyring
           modules.apps.libreoffice
+          modules.apps.weechat
+          neovim.nixosModules.default
 
           # Desktop
           modules.desktop.dms-niri
@@ -274,16 +302,16 @@
           modules.services.upower
 
           # Host-specific
-          hosts.hardware.laptop-iso
-          hosts.software.laptop-iso
+          hosts.hardware.live-cd
+          hosts.software.live-cd
 
           # Home
           hjem.nixosModules.default
-          modules.home.laptop-iso
+          modules.home.live-cd
         ];
       };
 
-      packages.${system}.laptop-iso = self.nixosConfigurations.laptop-iso.config.system.build.isoImage;
+      packages.${system}.live-cd = self.nixosConfigurations.live-cd.config.system.build.isoImage;
 
       nixosConfigurations.raspi = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
@@ -297,7 +325,11 @@
             microvm
             dms-plugin-registry
             sops-nix
+<<<<<<< HEAD
 	    nixos-hardware
+=======
+            neovim
+>>>>>>> 6c3f6b0d103a7c2878ae53582f3e0beaf144b948
             ;
         };
 
@@ -314,6 +346,8 @@
           modules.apps.ssh
           modules.apps.podman
 	        modules.apps.gnome-keyring
+          modules.apps.weechat
+          neovim.nixosModules.default
 
           # Boot
           modules.boot.kernel

@@ -11,7 +11,7 @@
       hashedPassword = null;
 
       sops = {
-        hashedPasswordKey = "raspi/elia/passwordHash";
+        hashedPasswordKey = "laptop-amd64/elia/passwordHash";
       };
     };
   };

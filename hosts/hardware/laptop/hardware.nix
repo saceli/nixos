@@ -67,9 +67,15 @@
   # hostname
   networking.hostName = "nixosaurus";
 
+  sops.secrets.homeLuksKey = {
+    sopsFile = ../../../secrets/secrets.yaml;
+    key = "laptop-amd64/elia/homeLuksKey";
+  };
+
   environment.etc."crypttab".text = ''
-    nixoshome UUID=55628a09-46ca-4299-9b40-f9cf45395d16 /root/secrets/homeluks.key luks,nofail
+    nixoshome UUID=55628a09-46ca-4299-9b40-f9cf45395d16 ${config.sops.secrets.homeLuksKey.path} luks,nofail
   '';
+
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
