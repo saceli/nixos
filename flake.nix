@@ -39,6 +39,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+
   };
 
   outputs =
@@ -52,6 +58,7 @@
       microvm,
       wallpapers,
       sops-nix,
+      nixos-hardware,
       ...
     }:
     let
@@ -290,12 +297,13 @@
             microvm
             dms-plugin-registry
             sops-nix
+	    nixos-hardware
             ;
         };
 
         modules = [
 
-	        cfg
+	  cfg
 
           sops-nix.nixosModules.default
           modules.apps.sops
@@ -350,6 +358,7 @@
           # Host-specific
           hosts.software.raspi
           hosts.hardware.raspi
+	  nixos-hardware.nixosModules.raspberry-pi-4
 
         ];
       };
