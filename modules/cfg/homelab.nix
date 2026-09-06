@@ -21,7 +21,7 @@
     
     baseUrl = lib.mkOption {
       type = lib.types.str;
-      default = "search.home";
+      default = "search.saceli.dev";
       description = "homelab searxng base url";
     };
 
@@ -59,5 +59,24 @@
 
   };
 
+    options.cfg.homelab.services.cryptpad = {
+    baseUrl = lib.mkOption {
+      type = lib.types.str;
+      default = "pad.saceli.dev";
+      description = "homelab cryptpad base url";
+    };
+
+    urlAliases = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = [
+        "pad.lan"
+        "pad.home"
+        "www.pad.lan"
+        "www.pad.home"
+        "${config.homelab.privateIp}:8002"
+      ];
+      description = "Cryptpad URL aliases";
+    };
+  };
 
 }

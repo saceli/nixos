@@ -39,13 +39,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-<<<<<<< HEAD
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-=======
     neovim = {
       url = "path:/home/elia/saceli/neovim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -55,7 +53,6 @@
       url = "github:roccorakete/anycubic-slicer-next-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
->>>>>>> 6c3f6b0d103a7c2878ae53582f3e0beaf144b948
 
   };
 
@@ -70,12 +67,10 @@
       microvm,
       wallpapers,
       sops-nix,
-<<<<<<< HEAD
       nixos-hardware,
-=======
       neovim,
       anycubic-slicer-next,
->>>>>>> 6c3f6b0d103a7c2878ae53582f3e0beaf144b948
+
       ...
     }:
     let
@@ -222,6 +217,7 @@
           modules.services.run0
           modules.services.timesyncd
           modules.services.upower
+	  modules.services.tailscale
 
           # Host-specific
           hosts.hardware.laptop
@@ -325,11 +321,9 @@
             microvm
             dms-plugin-registry
             sops-nix
-<<<<<<< HEAD
 	    nixos-hardware
-=======
             neovim
->>>>>>> 6c3f6b0d103a7c2878ae53582f3e0beaf144b948
+
             ;
         };
 

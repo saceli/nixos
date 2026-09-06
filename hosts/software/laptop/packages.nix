@@ -24,6 +24,10 @@
     anycubic-slicer-next.packages.x86_64-linux.default
     freecad
 
+    # CRYPTO
+    monero-gui
+    monero-cli
+
     # AUDIO & MUSIC
     spotify
     spicetify-cli
@@ -165,7 +169,7 @@
     starship
 
     # iOS Sideloading
-    # iloader.packages.${system}.default # broken as of 19th aug 2026 19:39 utc
+    iloader.packages.${system}.default # broken as of 19th aug 2026 19:39 utc
     usbmuxd
 
     # NixOS Ecosystem
