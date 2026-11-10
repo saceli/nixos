@@ -1,5 +1,5 @@
 { config, pkgs, ... }:
 
 {
-  users.users.elia.packages = [ pkgs.gedit ];
+  users.users.${config.cfg.user.username}.packages = [ pkgs.gedit ];
 }

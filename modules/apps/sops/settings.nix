@@ -1,6 +1,6 @@
-{ sops-nix, ... }:
+{ config, sops-nix, ... }:
 
 {
-  sops.defaultSopsFormat = "yaml";
-  sops.age.keyFile = "/root/secrets/sops/keys.txt";
+  sops.defaultSopsFormat = config.cfg.sops.defaultFormat;
+  sops.age.keyFile = config.cfg.sops.ageKeyFile;
 }

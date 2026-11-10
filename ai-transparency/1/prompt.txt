@@ -1,0 +1,178 @@
+You're a sysadmin working on a nixos flake for a big company, you mustn't make mistakes, errors or any kind of unsatisfying work.
+Your task given by your boss is to: 
+- Read through all of the flake given
+	as you may see, there's a modules/cfg containing some files. these files contain mkOptions options, some are already premade, keep those in mind for now.
+
+- understand the logic, writing style and the goal of everything.
+
+- Finally, the most important task - Add more options to modules/cfg, keep in mind that some options must have defaults and a nice description, no ambigous text, or anything that might cause confusion to anyone. You will be given a list of options and the files where they should be located, add those and only those. Make sure you distinguish them in the respective files and make more files if needed (it'll probably be needed).
+
+- Before continuing tell me everything you have unclear, if youre unsure about X dont just do what seems nicer, ask me first, do not bother with "oh sorry i ask so many questions", questions are better than an unsatisfactory result!
+
+- Next replace the previous hardcoded value (or any value that was previously in the place of the option) in the files listed with the new options.
+Remember to also replace the hardcoded values with the options in any other files in the flake. For example when you declare the username cfg option, dont leave the hardcoded "elia" everywhere else. just replace them 
+
+- Finally add a option called something like "allowDefaultValues", this will be needed in order to use any non-declared option (aka using the default value of an option), if it is not set to true, fail the build for ANY undeclared option (aka: that uses the default options declared) sending an error message to set 'Y' option
+	To help you better understand the usage of this option, it'll be used for a CI/CD pipeline, instead of feeding it a stubcfg or something like a demo/test/default-cfg.nix file, it uses defaults with the "allowDefaultValues" option enabled, so only that is injected, and prevents regular users from fucking up their system.
+	
+- In addition make a new script in utils/ called "gen-stubcfg.sh" that parses the cfg options declared and makes a file called stubcfg.nix in the working directory or with a "-o"/"--out"/"--output" option, this file will contain all the **declared** options with their default values.
+
+Thank you and good luck. Remember: Make no mistakes!!
+
+LIST OF OPTIONS TO ADD:
+
+// /home/elia/nixos/hosts/hardware/laptop/hardware.nix:42
+
+nixosroot
+
+// /home/elia/nixos/hosts/hardware/laptop/hardware.nix:47
+
+778cb3cd-345c-4920-ad23-93ea93d5b278
+
+// /home/elia/nixos/hosts/hardware/laptop/hardware.nix:51
+
+05FA-F4DC
+
+// /home/elia/nixos/hosts/hardware/laptop/hardware.nix:60
+
+nixoshome
+
+// /home/elia/nixos/hosts/hardware/laptop/hardware.nix:68
+
+nixosaurus
+
+// /home/elia/nixos/hosts/hardware/laptop/hardware.nix:72
+
+laptop-amd64/elia/homeLuksKey
+
+// /home/elia/nixos/hosts/hardware/laptop/hardware.nix:76
+
+55628a09-46ca-4299-9b40-f9cf45395d16
+
+// /home/elia/nixos/hosts/hardware/laptop/static-ip.nix:29
+
+192.168.178.30
+
+// /home/elia/nixos/hosts/hardware/live-cd/hardware.nix:31
+
+nixosaurus
+
+// /home/elia/nixos/hosts/hardware/raspi/hardware.nix:22
+
+nixodactyl
+
+// /home/elia/nixos/hosts/hardware/raspi/hardware.nix:15
+
+false
+
+// /home/elia/nixos/hosts/hardware/raspi/static-ip.nix:29
+
+192.168.178.33
+
+// /home/elia/nixos/hosts/software/live-cd/users/main.nix:6
+
+elia
+
+// /home/elia/nixos/hosts/software/live-cd/users/main.nix:11
+
+nixos
+
+// /home/elia/nixos/modules/apps/git/settings.nix:9
+
+301811192+saceli@users.noreply.github.com
+
+// /home/elia/nixos/modules/apps/git/settings.nix:5
+
+saceli
+
+// /home/elia/nixos/modules/apps/git/settings.nix:11
+
+~/.ssh/github
+
+// /home/elia/nixos/modules/apps/git/settings.nix:14
+
+../../../srv/allowed_signers // NOTE TO AI: FIND A WAY TO DIRECTLY DECLARE THE ALLLOWED SIGNERS IN THE ACTUAL OPTION
+// /home/elia/nixos/modules/apps/git/settings.nix:15
+
+main
+// /home/elia/nixos/modules/apps/git/settings.nix:13
+
+true
+// /home/elia/nixos/modules/apps/git/settings.nix:12
+
+ssh
+
+// /home/elia/nixos/modules/apps/sops/settings.nix:5
+
+/root/secrets/sops/keys.txt
+// /home/elia/nixos/modules/apps/sops/settings.nix:4
+
+yaml
+// /home/elia/nixos/modules/apps/ssh/aliases.nix:9
+
+~/.ssh/raspi
+// /home/elia/nixos/modules/boot/kernel/params.nix:105
+
+false
+// /home/elia/nixos/modules/boot/localization/keyboard.nix:6
+
+it
+
+// /home/elia/nixos/modules/boot/localization/keyboard.nix:7
+
+winkeys
+// /home/elia/nixos/modules/boot/localization/keyboard.nix:11
+
+it
+// /home/elia/nixos/modules/boot/localization/locales.nix:10
+
+it_IT.UTF-8
+// /home/elia/nixos/modules/boot/localization/locales.nix:11
+
+it_IT.UTF-8
+// /home/elia/nixos/modules/boot/localization/locales.nix:12
+
+it_IT.UTF-8
+// /home/elia/nixos/modules/boot/localization/locales.nix:13
+
+it_IT.UTF-8
+// /home/elia/nixos/modules/boot/localization/locales.nix:14
+
+it_IT.UTF-8
+// /home/elia/nixos/modules/boot/localization/locales.nix:15
+
+it_IT.UTF-8
+// /home/elia/nixos/modules/boot/localization/locales.nix:16
+
+it_IT.UTF-8
+// /home/elia/nixos/modules/boot/localization/locales.nix:17
+
+it_IT.UTF-8
+// /home/elia/nixos/modules/boot/localization/locales.nix:18
+
+it_IT.UTF-8
+// /home/elia/nixos/modules/boot/localization/time.nix:5
+
+Europe/Rome
+// /home/elia/nixos/modules/boot/users/accountsservice.nix:10
+
+../../../assets/pfp/${config.cfg.user.username}.png
+// /home/elia/nixos/modules/boot/users/sops.nix:6
+
+../../../secrets/secrets.yaml
+// /home/elia/nixos/modules/network/host/dns.nix:5-6
+
+nameserver 1.1.1.1
+    nameserver 1.0.0.1
+// /home/elia/nixos/modules/services/cryptpad/caddy.nix:26
+
+8002
+// /home/elia/nixos/modules/services/searxng/caddy.nix:21-23
+
+"search.lan"
+      "www.search.lan"
+      "www.search.home"
+// /home/elia/nixos/modules/services/sshd/keys.nix:6
+
+../../../srv/authorized_keys // NOTE TO AI: FIND A WAY TO DIRECTLY DECLARE THE AUTHORIZED KEYS IN THE ACTUAL OPTION
+

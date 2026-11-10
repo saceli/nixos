@@ -1,14 +1,14 @@
-{ ... }:
+{ config, ... }:
 
 {
   # configuration for the main user and their group
 
-  users.users."elia" = {
+  users.users.${config.cfg.user.username} = {
 
-    home = "/home/elia";
+    home = "/home/${config.cfg.user.username}";
 
     isNormalUser = true;
-    password = "nixos"; # Password: nixos
+    password = config.cfg.user.liveCdPassword;
 
     extraGroups = [
       "networkmanager"

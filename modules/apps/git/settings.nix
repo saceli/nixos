@@ -1,17 +1,16 @@
-{ config, ... }:
+{ config, lib, ... }:
 
 {
+  environment.etc."git/allowed_signers".text =
+    (lib.concatStringsSep "\n" config.cfg.git.allowedSigners) + "\n";
+
   programs.git.config = {
-    user.name = "saceli";
-
-    # Don't push your actual e-mail, it's a little bit unsafe, Better safe than sorry!
-    # https://docs.github.com/en/account-and-profile/reference/email-addresses-reference#your-noreply-email-address
-    user.email = "301811192+saceli@users.noreply.github.com";
-
-    user.signingKey = "~/.ssh/github";
-    gpg.format = "ssh";
-    commit.gpgSign = true;
-    gpg.ssh.allowedSignersFile = "../../../srv/allowed_signers";
-    init.defaultBranch = "main";
+    user.name = config.cfg.git.userName;
+    user.email = config.cfg.git.userEmail;
+    user.signingKey = config.cfg.git.signingKey;
+    gpg.format = config.cfg.git.gpgFormat;
+    commit.gpgSign = config.cfg.git.signCommits;
+    gpg.ssh.allowedSignersFile = "/etc/git/allowed_signers";
+    init.defaultBranch = config.cfg.git.defaultBranch;
   };
 }

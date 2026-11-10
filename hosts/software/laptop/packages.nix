@@ -12,15 +12,15 @@
     simulide
     kicad
     android-tools
-    adb-sync
+    better-adb-sync
     appimage-run
+    remmina
 
     # DESIGN & CREATIVE
     blender
     inkscape
     imagemagick
     figlet
-    orca-slicer
     anycubic-slicer-next.packages.x86_64-linux.default
     freecad
 
@@ -56,7 +56,6 @@
     wine
     wine64
     lunar-client
-    sidequest
 
     # COMMUNICATION
     vesktop
@@ -169,7 +168,7 @@
     starship
 
     # iOS Sideloading
-    iloader.packages.${system}.default # broken as of 19th aug 2026 19:39 utc
+    iloader.packages.${system}.default 
     usbmuxd
 
     # NixOS Ecosystem

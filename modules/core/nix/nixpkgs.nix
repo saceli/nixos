@@ -1,3 +1,5 @@
+{ lib, nixpkgs, ... }:
+
 {
   # configuration for nixpkgs
   nixpkgs.config = {
@@ -15,8 +17,15 @@
     # $ export NIXPKGS_ALLOW_UNFREE=1
     # $ nix shell nixpkgs#spotify --impure
     #
-    allowUnfree = true; # vmware workstation :(
-
+    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+     "vmware-workstation"
+     "spotify"
+     "steam"
+     "steam-unwrapped"
+     "lunarclient"
+     "unrar"
+    ];
+    
     # ensure packages marked as unsupported
     # for the current build system architecture
     # refuse to evaluate and build

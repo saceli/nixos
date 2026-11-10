@@ -2,5 +2,5 @@
 
 {
   # timezone
-  time.timeZone = "Europe/Rome";
+  time.timeZone = config.cfg.localization.timeZone;
 }

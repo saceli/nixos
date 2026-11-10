@@ -28,6 +28,6 @@
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   # hostname
-  networking.hostName = "nixosaurus";
+  networking.hostName = config.cfg.hosts.live-cd.hostName;
 
 }

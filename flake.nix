@@ -89,7 +89,7 @@
           ./modules/cfg
         ];
       };
-      
+
     in
     {
       devShells.${system}.default = pkgs.mkShell {
@@ -103,7 +103,7 @@
 
           # Nix
           nil
-          nixfmt-rfc-style
+          nixfmt
           statix
           deadnix
 
@@ -191,14 +191,14 @@
           modules.apps.gedit
           modules.apps.nautilus
           modules.apps.ssh
-	        modules.apps.gnome-keyring
+          modules.apps.gnome-keyring
           modules.apps.vlc
           modules.apps.libreoffice
           modules.apps.weechat
           neovim.nixosModules.default
 
           # Desktop
-          modules.desktop.dms-niri
+          modules.desktop.dux-niri
 
           # Hardware
           modules.hardware
@@ -217,7 +217,7 @@
           modules.services.run0
           modules.services.timesyncd
           modules.services.upower
-	  modules.services.tailscale
+          modules.services.tailscale
 
           # Host-specific
           hosts.hardware.laptop
@@ -247,7 +247,7 @@
         modules = [
           "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
 
-	        cfg
+          cfg
 
           sops-nix.nixosModules.default
           modules.apps.sops
@@ -275,13 +275,13 @@
           modules.apps.nautilus
           modules.apps.ssh
           modules.apps.vlc
-	        modules.apps.gnome-keyring
+          modules.apps.gnome-keyring
           modules.apps.libreoffice
           modules.apps.weechat
           neovim.nixosModules.default
 
           # Desktop
-          modules.desktop.dms-niri
+          modules.desktop.dux-niri
 
           # Hardware
           modules.hardware
@@ -321,7 +321,7 @@
             microvm
             dms-plugin-registry
             sops-nix
-	    nixos-hardware
+            nixos-hardware
             neovim
 
             ;
@@ -329,7 +329,7 @@
 
         modules = [
 
-	  cfg
+          cfg
 
           sops-nix.nixosModules.default
           modules.apps.sops
@@ -339,7 +339,7 @@
           modules.apps.bash
           modules.apps.ssh
           modules.apps.podman
-	        modules.apps.gnome-keyring
+          modules.apps.gnome-keyring
           modules.apps.weechat
           neovim.nixosModules.default
 
@@ -381,12 +381,12 @@
           modules.services.caddy
           modules.services.unbound
           modules.services.searxng
-	        modules.services.tailscale
+          modules.services.tailscale
 
           # Host-specific
           hosts.software.raspi
           hosts.hardware.raspi
-	  nixos-hardware.nixosModules.raspberry-pi-4
+          nixos-hardware.nixosModules.raspberry-pi-4
 
         ];
       };

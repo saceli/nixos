@@ -11,5 +11,9 @@ result-*
 # Ignore vscode shit
 .vscode*
 
-# ignore this useless reminder for my ports, its just a map of what i use internally for caddy, dont worry about it
-srv/ports.txt
+# personal reminders and notes
+*srv*
+**srv**
+
+# personal config (use utils/gen-stubcfg.sh if you need a template with the default options)
+*cfg.nix

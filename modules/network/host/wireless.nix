@@ -1,5 +1,7 @@
+{ config, ... }:
+
 {
-  users.users."elia".extraGroups = [
+  users.users.${config.cfg.user.username}.extraGroups = [
     "networkmanager"
   ];
 }

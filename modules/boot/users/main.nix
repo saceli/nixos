@@ -2,7 +2,7 @@
 
 {
   users.users.${config.cfg.user.username} = {
-    home = "/home/elia";
+    home = "/home/${config.cfg.user.username}";
 
     isNormalUser = true;
 

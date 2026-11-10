@@ -1,4 +1,10 @@
 {
+  config,
+  lib,
+  ...
+}:
+
+{
   # linux kernel parameters
   boot.kernelParams = [
     # disables merging of slabs of similar sizes
@@ -84,23 +90,9 @@
     # prevents code execution in certain memory regions
     # can increase memory usage, especially with KVM-based hypervisors
     "kvm.nx_huge_pages=force"
-
-    # disable ipv6
-    # i dont need this
-    "ipv6.disable=1"
-
-    # disable hyperthreading - for both amd and intel
-    # also disable TSX and mitigate TAA - mostly for intel
-    # also mitigate speculative execution vulnerabilities - mostly for intel
-    # dramatic performance losses
-    #"nosmt=force"
-    #"tsx=off"
-    #"tsx_async_abort=full,nosmt"
-    #"l1tf=full,force"
-    #"mds=full,nosmt"
-  ];
+  ] ++ lib.optional (!config.cfg.boot.enableIpv6) "ipv6.disable=1";
 
   boot.loader.efi.canTouchEfiVariables = true; # Don't know where to put this lol.
 
-  networking.enableIPv6 = false; # I personally dont need ipv6, if you do set this to true and set "ipv6.disable=0"
+  networking.enableIPv6 = config.cfg.boot.enableIpv6; # I personally dont need ipv6, if you do set this to true and set "ipv6.disable=0"
 }

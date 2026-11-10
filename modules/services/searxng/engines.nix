@@ -26,8 +26,8 @@
     "mymemory translated".disabled = true;
 
     # general > web
-    "bing".disabled = false;
-    "brave".disabled = true;
+    "bing".disabled = true;
+    "brave".disabled = false;
     "duckduckgo".disabled = false;
     "google cse".disabled = false;
     "mojeek".disabled = true;

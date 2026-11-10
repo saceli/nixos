@@ -1,4 +1,4 @@
-{ nixpkgs, nixos-hardware, pkgs, lib, ... }:
+{ nixpkgs, nixos-hardware, pkgs, lib, config, ... }:
 
 {
   imports = [
@@ -12,14 +12,14 @@
 
   hardware.enableRedistributableFirmware = true;
 
-  sdImage.compressImage = false;
+  sdImage.compressImage = config.cfg.hosts.raspi.compressSdImage;
 
   # anti raspi-bomber
   nix.settings.max-jobs = 1;
   nix.settings.cores = 1;
 
   # hostname
-  networking.hostName = "nixodactyl";
+  networking.hostName = config.cfg.hosts.raspi.hostName;
 
   # Create gpio group
   users.groups.gpio = {};
@@ -28,12 +28,12 @@
   services.udev.extraRules = ''
     SUBSYSTEM=="bcm2835-gpiomem", KERNEL=="gpiomem", GROUP="gpio",MODE="0660"
     SUBSYSTEM=="gpio", KERNEL=="gpiochip*", ACTION=="add", RUN+="${pkgs.bash}/bin/bash -c 'chown root:gpio /sys/class/gpio/export /sys/class/gpio/unexport ; chmod 220 /sys/class/gpio/export /sys/class/gpio/unexport'"
-    SUBSYSTEM=="gpio", KERNEL=="gpio*", ACTION=="add",RUN+="${pkgs.bash}/bin/bash -c 'chown root:gpio /sys%p/active_low /sys%p/direction /sys%p/edge /sys%p/value ; chmod 660 /sys%p/active_low /sys%p/direction /sys%p/edge /sys%p/value'"
+    SUBSYSTEM=="gpio", KERNEL=="gpio*", ACTION="add",RUN+="${pkgs.bash}/bin/bash -c 'chown root:gpio /sys%p/active_low /sys%p/direction /sys%p/edge /sys%p/value ; chmod 660 /sys%p/active_low /sys%p/direction /sys%p/edge /sys%p/value'"
   '';
 
   # Add user to group
   users = {
-    users.elia = {
+    users.${config.cfg.user.username} = {
       extraGroups = [ "gpio" "i2c" ];
     };
   };

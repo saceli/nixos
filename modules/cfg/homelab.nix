@@ -18,7 +18,7 @@
   };
 
   options.cfg.homelab.services.searxng = {
-    
+
     baseUrl = lib.mkOption {
       type = lib.types.str;
       default = "search.saceli.dev";
@@ -27,14 +27,13 @@
 
     urlAliases = lib.mkOption {
       type = lib.types.listOf lib.types.str;
-      default = [ 
+      default = [
         "search.lan"
         "www.search.lan"
-        "www.search.home" 
+        "www.search.home"
       ];
-      description = "SSH authorized keys for MicroVM root";
+      description = "homelab searxng url aliases (caddy serverAliases)";
     };
-
 
   };
 
@@ -59,11 +58,17 @@
 
   };
 
-    options.cfg.homelab.services.cryptpad = {
+  options.cfg.homelab.services.cryptpad = {
     baseUrl = lib.mkOption {
       type = lib.types.str;
       default = "pad.saceli.dev";
       description = "homelab cryptpad base url";
+    };
+
+    port = lib.mkOption {
+      type = lib.types.int;
+      default = 8002;
+      description = "TCP port on the cryptpad MicroVM (10.0.0.2) that Caddy reverse-proxies to";
     };
 
     urlAliases = lib.mkOption {
@@ -73,7 +78,7 @@
         "pad.home"
         "www.pad.lan"
         "www.pad.home"
-        "${config.homelab.privateIp}:8002"
+        "${config.cfg.homelab.privateIp}:8002"
       ];
       description = "Cryptpad URL aliases";
     };

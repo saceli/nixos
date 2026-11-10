@@ -1,11 +1,11 @@
-{ lib, ... }:
+{ config, lib, ... }:
 
 {
 
   services.openssh = {
     settings = {
       # only allow the main user
-      AllowUsers = lib.mkForce [ "elia" ];
+      AllowUsers = lib.mkForce [ config.cfg.user.username ];
 
       # disable root login
       PermitRootLogin = "no";

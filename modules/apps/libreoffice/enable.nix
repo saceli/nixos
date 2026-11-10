@@ -1,5 +1,5 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
-  users.users.elia.packages = [ pkgs.libreoffice ];
+  users.users.${config.cfg.user.username}.packages = [ pkgs.libreoffice ];
 }

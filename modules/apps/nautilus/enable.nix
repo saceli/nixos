@@ -1,5 +1,5 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
-  users.users.elia.packages = [ pkgs.nautilus ];
+  users.users.${config.cfg.user.username}.packages = [ pkgs.nautilus ];
 }

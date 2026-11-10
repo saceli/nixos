@@ -2,13 +2,13 @@
 
 let
   globalPiSettings = ''
-    HostName 192.168.178.33
-    User elia
+    HostName ${config.cfg.homelab.privateIp}
+    User ${config.cfg.user.username}
     Port 22
     SetEnv TERM=xterm-256color
-    IdentityFile ~/.ssh/raspi
+    IdentityFile ${config.cfg.ssh.raspiIdentityFile}
   '';
-in 
+in
 
 
 {
@@ -29,7 +29,7 @@ in
       Host github
         HostName github.com
         User git
-        IdentityFile ~/.ssh/github
+        IdentityFile ${config.cfg.git.signingKey}
     '';
   };
 }

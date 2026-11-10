@@ -1,5 +1,5 @@
 { config, pkgs, ... }:
 
 {
-  users.users.elia.packages = [ pkgs.vlc ];
+  users.users.${config.cfg.user.username}.packages = [ pkgs.vlc ];
 }

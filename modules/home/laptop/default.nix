@@ -1,4 +1,4 @@
-{ wallpapers, ... }:
+{ config, wallpapers, ... }:
 
 {
   hjem = {
@@ -9,17 +9,15 @@
         ;
     };
 
-    users = {
-      elia = {
-        enable = true;
+    users.${config.cfg.user.username} = {
+      enable = true;
 
-        # per-user module imports
-        imports = [
-          ./files.nix
-          ./wallpapers.nix
-          ../universal-configs
-        ];
-      };
+      # per-user module imports
+      imports = [
+        ./files.nix
+        ./wallpapers.nix
+        ../universal-configs
+      ];
     };
   };
 }

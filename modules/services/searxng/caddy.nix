@@ -17,10 +17,7 @@ in
   services.caddy.virtualHosts."${config.cfg.homelab.services.searxng.baseUrl}" = {
     listenAddresses = [ "0.0.0.0" ];
 
-    serverAliases = [
-      "search.lan"
-      "www.search.lan"
-      "www.search.home"
+    serverAliases = config.cfg.homelab.services.searxng.urlAliases ++ [
       config.cfg.homelab.privateIp
     ];
 

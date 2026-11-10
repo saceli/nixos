@@ -9,6 +9,9 @@
   ...
 }:
 
+let
+  cfg = config.cfg.hosts.laptop;
+in
 {
 
   boot.initrd.availableKernelModules = [
@@ -39,16 +42,17 @@
   ];
 
   fileSystems."/" = {
-    device = "/dev/mapper/nixosroot";
+    device = "/dev/mapper/${cfg.rootMapperName}";
     fsType = "xfs";
   };
 
-  boot.initrd.luks.devices."nixosroot".device =
-    "/dev/disk/by-uuid/778cb3cd-345c-4920-ad23-93ea93d5b278";
-  boot.initrd.luks.devices."nixosroot".preLVM = true;
+  boot.initrd.luks.devices.${cfg.rootMapperName} = {
+    device = "/dev/disk/by-uuid/${cfg.rootLuksUuid}";
+    preLVM = true;
+  };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/05FA-F4DC";
+    device = "/dev/disk/by-uuid/${cfg.bootPartitionUuid}";
     fsType = "vfat";
     options = [
       "fmask=0077"
@@ -57,7 +61,7 @@
   };
 
   fileSystems."/home" = {
-    device = "/dev/mapper/nixoshome";
+    device = "/dev/mapper/${cfg.homeMapperName}";
     fsType = "xfs";
   };
 
@@ -65,15 +69,15 @@
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   # hostname
-  networking.hostName = "nixosaurus";
+  networking.hostName = cfg.hostName;
 
   sops.secrets.homeLuksKey = {
     sopsFile = ../../../secrets/secrets.yaml;
-    key = "laptop-amd64/elia/homeLuksKey";
+    key = cfg.homeLuksKeySopsKey;
   };
 
   environment.etc."crypttab".text = ''
-    nixoshome UUID=55628a09-46ca-4299-9b40-f9cf45395d16 ${config.sops.secrets.homeLuksKey.path} luks,nofail
+    ${cfg.homeMapperName} UUID=${cfg.homeLuksUuid} ${config.sops.secrets.homeLuksKey.path} luks,nofail
   '';
 
   hardware.graphics = {

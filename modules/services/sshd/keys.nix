@@ -1,9 +1,7 @@
-{ ... }:
+{ config, ... }:
 
 {
 
-  users.users.elia.openssh.authorizedKeys.keyFiles = [
-    ../../../srv/authorized_keys
-  ];
+  users.users.${config.cfg.user.username}.openssh.authorizedKeys.keys = config.cfg.ssh.authorizedKeys;
 
 }

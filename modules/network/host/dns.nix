@@ -1,10 +1,7 @@
 { config, lib, ... }:
 
 let
-  text = ''
-    nameserver 1.1.1.1
-    nameserver 1.0.0.1
-  '';
+  text = (lib.concatStringsSep "\n" (map (ns: "nameserver ${ns}") config.cfg.network.dnsServers)) + "\n";
 in
 {
   # disable auto generation of resolv.conf

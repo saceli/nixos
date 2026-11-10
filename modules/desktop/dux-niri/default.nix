@@ -1,7 +1,7 @@
 {
   imports = [
     ./niri.nix
-    ./dms-greeter.nix
-    ./dms.nix
+    ./dux-greeter.nix
+    ./dux.nix
   ];
 }

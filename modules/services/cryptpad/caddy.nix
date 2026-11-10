@@ -23,7 +23,7 @@ in
 
     extraConfig = ''
       ${securityHeaders}
-      reverse_proxy 10.0.0.2:8002
+      reverse_proxy 10.0.0.2:${toString config.cfg.homelab.services.cryptpad.port}
       tls internal
     '';
   };

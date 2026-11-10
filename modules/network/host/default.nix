@@ -5,5 +5,6 @@
     ./machine-id.nix
     ./issue.nix
     ./wireless.nix
+    ./static-ip.nix
   ];
 }

@@ -269,7 +269,7 @@ Drops you into a shell with a status banner and the full toolchain:
   - clipboard history **disabled**
   - plugin: `dankBatteryAlerts` from `dms-plugin-registry`
 - **dms-greeter** display manager running on niri
-- Declarative home files via hjem: GTK 3/4 settings, DMS settings/session,
+- Declarative home files via hjem: GTK 3/4 settings, dux settings/session,
   niri `config.kdl`, dgop colors, fastfetch, fontconfig, neofetch, starship,
   `.bashrc`
 - Catppuccin GTK theme, Papirus icons, Bibata cursors; Noto (+CJK +emoji),
@@ -335,7 +335,7 @@ modules/
 │                localization · malloc (graphene) · secureboot (lanzaboote)
 │                systemd-boot · uboot (extlinux) · users (immutable/locked-root)
 ├── core/        nix (settings, nix-ld, /etc/current-flake) · packages · state
-├── desktop/     dms-niri (niri + DankMaterialShell + greeter) · niri
+├── desktop/     dux-niri (niri + DankMaterialShell + greeter) · niri
 ├── hardware/    redistributable firmware defaults
 ├── home/        hjem file trees per host (laptop · live-cd · raspi)
 │                + universal-configs (fastfetch, starship, bashrc…)

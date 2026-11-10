@@ -8,5 +8,5 @@
   services.pipewire.pulse.enable = true;
 
   # pavucontrol
-  users.users.elia.packages = [ pkgs.pavucontrol ];
+  users.users.${config.cfg.user.username}.packages = [ pkgs.pavucontrol ];
 }

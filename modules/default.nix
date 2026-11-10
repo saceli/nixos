@@ -41,7 +41,7 @@
     };
 
     desktop = {
-      dms-niri = { imports = [ ./desktop/dms-niri ]; };
+      dux-niri = { imports = [ ./desktop/dux-niri ]; };
       niri = { imports = [ ./desktop/niri ]; };
 
     };

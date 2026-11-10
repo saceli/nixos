@@ -1,10 +1,5 @@
-{
-  config,
-  pkgs,
-  ...
-}:
+{ config, pkgs, ... }:
 
 {
-  programs.chromium.enable = true;
-  users.users."elia".packages = [ pkgs.brave ];
+  users.users.${config.cfg.user.username}.packages = [ pkgs.brave ];
 }

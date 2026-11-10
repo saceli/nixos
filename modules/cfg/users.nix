@@ -14,6 +14,18 @@
       description = "Password hash. If null, SOPS is used.";
     };
 
+    avatar = lib.mkOption {
+      type = lib.types.nullOr lib.types.path;
+      default = null;
+      description = "Profile picture of the main user, used by AccountsService. If null, no profile picture is configured.";
+    };
+
+    liveCdPassword = lib.mkOption {
+      type = lib.types.str;
+      default = "nixos";
+      description = "Plain-text password of the main user on the live-cd host.";
+    };
+
     sops.hashedPasswordKey = lib.mkOption {
       type = lib.types.nullOr lib.types.str;
       default = null;

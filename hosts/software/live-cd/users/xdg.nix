@@ -1,7 +1,7 @@
 { config, ... }:
 
 let
-  user = "elia";
+  user = config.cfg.user.username;
   home = "/home/${user}";
 in
 {

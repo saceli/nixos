@@ -1,5 +1,5 @@
 { config, pkgs, ... }:
 
 {
-  users.users.elia.packages = [ pkgs.zathura ];
+  users.users.${config.cfg.user.username}.packages = [ pkgs.zathura ];
 }
